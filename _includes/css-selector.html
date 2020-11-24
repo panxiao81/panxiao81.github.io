@@ -25,7 +25,11 @@
     {% elsif page.title == 'Archives'%}
       <link rel="preload" href="{{ '/assets/css/archives.css' | relative_url }}" as="style">
       <link rel="stylesheet" href="{{ '/assets/css/archives.css' | relative_url }}">
-   
+
+    {% else %}
+      <link rel="preload" href="{{ '/assets/css/page.css' | relative_url }}" as="style">
+      <link rel="stylesheet" href="{{ '/assets/css/page.css' | relative_url }}">
+    
     {% endif %}
 
   {% else %}
