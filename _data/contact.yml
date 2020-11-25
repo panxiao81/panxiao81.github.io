@@ -32,3 +32,8 @@
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+-
+  type: friend
+  icon: 'fas fa-address-book'
+  url: '/tabs/Friends'
+  noblank: true
