@@ -15,7 +15,7 @@ tags: [linux]
 
 对不上，对不上。
 
-# Level 8 -> Level 9
+# Level 8 → Level 9
 
 ## 目标
 
@@ -47,7 +47,7 @@ UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 
 
 
-# Level 9 -> Level 10
+# Level 9 → Level 10
 
 ## 目标
 
@@ -87,7 +87,7 @@ truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 
 
 
-# Level 10 -> Level 11
+# Level 10 → Level 11
 
 ## 目标
 
@@ -123,7 +123,7 @@ The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 ```
 
-# Level 11 -> Level 12
+# Level 11 → Level 12
 
 ## 目标
 
@@ -226,7 +226,7 @@ Anyway，密码是
 
 
 
-# Level 12 -> Level 13
+# Level 12 → Level 13
 
 ## 目标
 
@@ -324,7 +324,7 @@ The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 ```
 
-# Level 13 -> Level 14
+# Level 13 → Level 14
 
 ## 目标
 
@@ -360,7 +360,7 @@ $ ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 ```
 
-# Level 14 -> Level 15
+# Level 14 → Level 15
 
 ## 目标
 
@@ -397,7 +397,7 @@ BfMYroe26WYalil77FoDi9qh59eK5xNr
 BfMYroe26WYalil77FoDi9qh59eK5xNr
 ```
 
-# Level 15 -> Level 16
+# Level 15 → Level 16
 
 ## 目标
 
@@ -441,7 +441,7 @@ closed
 cluFn7wTiGryunymYOu4RcffSxQluehd
 ```
 
-# Level 16 -> Level 17
+# Level 16 → Level 17
 
 ## 目标
 
@@ -578,7 +578,7 @@ vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
 -----END RSA PRIVATE KEY-----
 ```
 
-# Level 17 -> Level 18
+# Level 17 → Level 18
 
 ## 目标
 
@@ -608,7 +608,7 @@ $ diff passwords.new passwords.old
 kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 ```
 
-# Level 18 -> Level 19
+# Level 18 → Level 19
 
 ## 目标
 
@@ -636,7 +636,7 @@ IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 ```
 
-# Level 19 -> Level 20
+# Level 19 → Level 20
 
 ## 目标
 
@@ -683,4 +683,261 @@ GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 ```
 
 
+
+# Level 20 → Level 21
+
+## 目标
+
+在家目录中有一个 setuid 二进制文件，它的作用是：在你指定的命令行参数的端口上与 localhost 建立一个连接。然后，它从连接中读取一行文本，并将其与上一级的密码 (bandit20) 进行比较。如果密码正确，它将传输下一级别的密码（bandit21）。
+
+注意：尝试连接到你自己的网络守护进程，看看它是否如你所想的那样工作。
+
+## 解决这一关也许需要的命令
+
+`ssh` `nc` `cat` `bash` `screen` `tmux` `Unix 'job control' (bg,fg,&,CTRL-Z)`
+
+## 我不知道我在说什么
+
+这关挺有意思的
+
+`nc` 命令可以充当服务器进行监听，但显然我们不能在同一个终端里开两个程序。所以我们需要一些辅助手段。
+
+`screen` 命令可以轻松完成这个工作。当然也给出了 `tmux` 也是 OK 的。
+
+关于这个命令我看过一篇非常好的文章，是 IBM Developer 上放出的[Linux 技巧：使用 screen 管理你的远程会话](https://www.ibm.com/developerworks/cn/linux/l-cn-screen/)，我当年是看这篇文章学会使用这个命令的。这篇文章现在不特地搜索的话已经不会出现在搜索引擎前几页了。虽然 `tmux` 真的很高端就是了……
+
+Anyway，来看过程
+
+我们需要新建一个会话来运行 `nc` 接收并发送数据。因此
+
+```bash
+$ screen -S nc
+```
+
+打开一个新会话，然后运行 `nc`
+
+```bash
+$ nc -l -p 33333
+```
+
+然后把上一关的密码粘贴进去
+
+现在 `C-a d` 返回我们原来的会话，运行
+
+```sh
+$ ./suconnect 33333
+```
+
+他读到了数据。
+
+```sh
+bandit20@bandit:~$ ./suconnect 33333
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+```
+
+进到我们创建的会话找密码吧
+
+```sh
+$ screen -r nc
+$$ nc -l -p 33333
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+```
+
+得到密码！
+
+```
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+```
+
+# Level 21 → Level 22
+
+## 目标
+
+计划任务管理器 cron 每隔一段时间就会自动运行一个程序。在 /etc/cron.d/ 中查看配置，看看正在执行什么命令。
+
+## 解决这一关也许需要的命令
+
+`cron`, `crontab`, `crontab(5)` (用 `man 5 crontab` 来查看)
+
+## 我不知道我在说什么
+
+说来惭愧，我知道 `cron` 计划任务很有用，但我真的从来没用过。
+
+我眼前唯一能想到的就是写个脚本自动续证书，但是在服务器端用 `Caddy` 做反向代理之后连这个需求也没了。
+
+其实这道题根本不需要对 `cron` 有什么了解，因为题目已经把需要的都告诉你了。
+
+```sh
+bandit21@bandit:~$ ls -l /etc/cron.d/
+total 24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit15_root
+-rw-r--r-- 1 root root  62 Jul 11 15:56 cronjob_bandit17_root
+-rw-r--r-- 1 root root 120 May  7  2020 cronjob_bandit22
+-rw-r--r-- 1 root root 122 May  7  2020 cronjob_bandit23
+-rw-r--r-- 1 root root 120 May 14  2020 cronjob_bandit24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit25_root
+bandit21@bandit:~$ cat /etc/cron.d/cronjob_bandit22 
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+bandit21@bandit:~$ cat /usr/bin/cronjob_bandit22.sh 
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:~$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+```
+
+追查一路直接拿到密码。
+
+```
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+```
+
+# Level 22 → Level 23
+
+## 目标
+
+计划任务管理器 `cron` 每隔一段时间就会自动运行一个程序。在 /etc/cron.d/ 中查看配置，看看正在执行什么命令。
+
+注意：看别人写的shell脚本是一项非常有用的技能。本关的脚本是故意让人容易阅读的。如果你在理解它的作用方面有问题，可以试着执行它，看看它打印的调试信息。
+
+## 解决这一关也许需要的命令
+
+`cron`, `crontab`, `crontab(5)` (用 `man 5 crontab` 来查看)
+
+## 我不知道我在说什么
+
+追查一路，发现一个脚本
+
+```sh
+bandit22@bandit:~$ ls /etc/cron.d
+cronjob_bandit15_root  cronjob_bandit22  cronjob_bandit24
+cronjob_bandit17_root  cronjob_bandit23  cronjob_bandit25_root
+bandit22@bandit:~$ cat /etc/cron.d/cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null    
+bandit22@bandit:~$ cat /usr/bin/cronjob_bandit23.sh 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+```
+
+这就非常简单了，我们模拟一下好了，当然用户名字应该是 `bandit23`
+
+```sh
+bandit22@bandit:~$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:~$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+```
+
+直接到手！
+
+```
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+```
+
+# Level 23 → Level 24
+
+## 目标
+
+基于时间的作业调度器cron每隔一段时间就会自动运行一个程序。在/etc/cron.d/中查看配置，看看正在执行什么命令。
+
+注意：这一关需要你创建自己的第一个shell-script，这是一个非常大的步骤，你应该在/etc/cron.d/中查看配置，看看正在执行什么命令。这是非常重要的一步，当你通过这一关时，你应该为自己感到骄傲。
+
+注意2: 记住你的shell脚本一旦执行就会被删除，所以你可能想保留一份副本......
+
+## 解决这一关也许需要的命令
+
+`cron`, `crontab`, `crontab(5)` (用 `man 5 crontab` 来查看)
+
+## 我不知道我在说什么
+
+```sh
+bandit23@bandit:~$ cat /etc/cron.d/cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+bandit23@bandit:~$ cat /usr/bin/cronjob_bandit24.sh 
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+bandit23@bandit:~$ ls -ld /var/spool/bandit24
+drwxrwx-wx 43 root bandit24 4096 Dec  3 16:04 /var/spool/bandit24
+```
+
+最有意思的莫过于给写权限却不给读权限。
+
+Anyway，这个必须写脚本。
+
+目的是用脚本让 `bandit24` 用户执行脚本，就可以将密码输出给我了。
+
+创建一个工作目录吧，然后脚本写起来。
+
+```sh
+$ mktemp -d
+/tmp/tmp.vcwnLe4j7i
+$ cd /tmp/tmp.vcwnLe4j7i
+```
+
+创建一个脚本，以及一个输出文件
+
+```sh
+$ touch password
+$ vim getpass.sh
+$ chmod 777 getpass.sh
+# change the directory permissions
+$ chmod 777 .
+$ cp getpass.sh /var/spool/bandit24
+```
+
+ 脚本如下
+
+```sh
+#!/bin/bash
+        
+cat /etc/bandit_pass/bandit24 > /tmp/tmp.vcwnLe4j7i/password                                       
+```
+
+把密码输出
+
+```sh
+$ cat password 
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+```
+
+得到密码
+
+```
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+```
+
+# Level 24 → Level 25
+
+## 目标
+
+一个守护进程在端口30002上监听，如果给了bandit24的密码和一个秘密的4位数字密码，就会给你bandit25的密码。除了通过所有的10000个组合，也就是所谓的蛮力逼迫，是没有办法获取密码的。
+
+## 我不知道我在说什么
 
