@@ -41,7 +41,7 @@ EQ如何用来修复音频？
 
 以及其他的修复方式？
 
-## Compressor Basics Cheaper One ：First Stage
+## [Compressor Basics Cheaper One ：First Stage](https://us.ddupan.top/slides/compep1.html)
 
 声音忽大忽小融入不进去？你以为是用推子手动修复音量的吗？
 
