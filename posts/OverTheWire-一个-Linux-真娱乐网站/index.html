@@ -1,0 +1,639 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.6.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="OverTheWire —— 一个 Linux 真娱乐网站" /><meta name="author" content="Pan Xiao" /><meta property="og:locale" content="en_US" /><meta name="description" content="一个类似 CTF 的练习 Linux 命令的网站" /><meta property="og:description" content="一个类似 CTF 的练习 Linux 命令的网站" /><link rel="canonical" href="https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" /><meta property="og:url" content="https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" /><meta property="og:site_name" content="Pan Xiao’s Blog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-12-02T00:00:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="OverTheWire —— 一个 Linux 真娱乐网站" /><meta name="twitter:site" content="@pan_xiao" /><meta name="twitter:creator" content="@Pan Xiao" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"一个类似 CTF 的练习 Linux 命令的网站","@type":"BlogPosting","headline":"OverTheWire —— 一个 Linux 真娱乐网站","dateModified":"2020-12-09T23:06:24+08:00","datePublished":"2020-12-02T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/"},"url":"https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/","author":{"@type":"Person","name":"Pan Xiao"},"@context":"https://schema.org"}</script><title>OverTheWire —— 一个 Linux 真娱乐网站 | Pan Xiao's Blog</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script> <script src="https://cdn.jsdelivr.net/gh/panxiao81/live2d-widget@latest/autoload.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Pan Xiao's Blog</a></div><div class="site-subtitle font-italic">IT, Network and Music</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Course/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-file-audio ml-xl-3 mr-xl-3 unloaded"></i> <span>MIXING COURSE</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Friends/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-user-friends ml-xl-3 mr-xl-3 unloaded"></i> <span>FRIENDS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/panxiao81" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/pan_xiao" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['pan-xiao','live.cn'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="/tabs/Friends" aria-label="friend" > <i class="fas fa-address-book"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>OverTheWire —— 一个 Linux 真娱乐网站</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>OverTheWire —— 一个 Linux 真娱乐网站</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Dec 2, 2020, 12:00 AM +0800" > Dec 2, 2020 <i class="unloaded">2020-12-02T00:00:00+08:00</i> </span> by <span class="author"> Pan Xiao </span></div><div> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Wed, Dec 9, 2020, 11:06 PM +0800" > Dec 9, 2020 <i class="unloaded">2020-12-09T23:06:24+08:00</i> </span></div></div><div class="post-content"><p>一个类似 CTF 的练习 Linux 命令的网站</p><p><a href="https://overthewire.org/wargames">overthewire.org</a></p><p>网站说不让剧透，包括写题解。我接下来说的东西我也不知道我在说什么。</p><p>对不上，对不上。</p><h1 id="level-8--level-9">Level 8 → Level 9</h1><h2 id="目标">目标</h2><p>下一关的密码存放在 <code class="language-plaintext highlighter-rouge">data.txt</code> 文件中，并且是不重复的唯一一行。</p><h2 id="解决这一关也许需要的命令">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">sort</code>, <code class="language-plaintext highlighter-rouge">uniq</code>, <code class="language-plaintext highlighter-rouge">strings</code>, <code class="language-plaintext highlighter-rouge">base64</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>, <code class="language-plaintext highlighter-rouge">bzip2</code>, <code class="language-plaintext highlighter-rouge">xxd</code></p><h2 id="有帮助的阅读资料">有帮助的阅读资料</h2><p><a href="https://ryanstutorials.net/linuxtutorial/piping.php">Piping and Redirection</a></p><h2 id="我不知道我在说什么">我不知道我在说什么</h2><p>这一关需要用到管道，将文件内容排序后去重即可</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">sort</span> | <span class="nb">uniq</span> <span class="nt">-u</span>
+</pre></table></code></div></div><p>其中 <code class="language-plaintext highlighter-rouge">uniq -u</code> 输出唯一的不重复的一行。</p><p>得到 flag</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+</pre></table></code></div></div><h1 id="level-9--level-10">Level 9 → Level 10</h1><h2 id="目标-1">目标</h2><p>下一关的密码存储在文件 <code class="language-plaintext highlighter-rouge">data.txt</code> 中，是为数不多的可读字符串之一，前面有几个’=’字符。</p><h2 id="解决这一关也许需要的命令-1">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">sort</code>, <code class="language-plaintext highlighter-rouge">uniq</code>, <code class="language-plaintext highlighter-rouge">strings</code>, <code class="language-plaintext highlighter-rouge">base64</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>, <code class="language-plaintext highlighter-rouge">bzip2</code>, <code class="language-plaintext highlighter-rouge">xxd</code></p><h2 id="我不知道我在说什么-1">我不知道我在说什么</h2><p>这一关用 <code class="language-plaintext highlighter-rouge">strings</code> 命令，可将能阅读的字符串输出至标准输出。</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>strings data.txt
+</pre></table></code></div></div><p>之后很容易找到特征。</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>...
+========== the*2i"4
+...
+========== password
+...
+Z)========== is
+...
+&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+...
+</pre></table></code></div></div><p>所以，毫无疑问，答案就是这一串了。</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+</pre></table></code></div></div><h1 id="level-10--level-11">Level 10 → Level 11</h1><h2 id="目标-2">目标</h2><p>下一关的密码存放在 <code class="language-plaintext highlighter-rouge">data.txt</code> 中，并且用 <code class="language-plaintext highlighter-rouge">base64</code> 方式加密。</p><h2 id="解决这一关也许需要的命令-2">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">sort</code>, <code class="language-plaintext highlighter-rouge">uniq</code>, <code class="language-plaintext highlighter-rouge">strings</code>, <code class="language-plaintext highlighter-rouge">base64</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>, <code class="language-plaintext highlighter-rouge">bzip2</code>, <code class="language-plaintext highlighter-rouge">xxd</code></p><h2 id="有帮助的阅读资料-1">有帮助的阅读资料</h2><p><a href="https://en.wikipedia.org/wiki/Base64">Base64 on Wikipedia</a></p><h2 id="我不知道我在说什么-2">我不知道我在说什么</h2><p>这关只要解密 <code class="language-plaintext highlighter-rouge">base64</code> 即可</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">base64</span> <span class="nt">-d</span> data.txt
+</pre></table></code></div></div><p>用 <code class="language-plaintext highlighter-rouge">-d</code> 参数进行解密，否则默认是加密。</p><p>输出</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+</pre></table></code></div></div><p>显而易见，密码是</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+</pre></table></code></div></div><h1 id="level-11--level-12">Level 11 → Level 12</h1><h2 id="目标-3">目标</h2><p>下一关的密码存储在文件data.txt中，其中所有小写(a-z)和大写(A-Z)字母已经旋转了13个位置。</p><h2 id="解决这一关也许需要的命令-3">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">sort</code>, <code class="language-plaintext highlighter-rouge">uniq</code>, <code class="language-plaintext highlighter-rouge">strings</code>, <code class="language-plaintext highlighter-rouge">base64</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>, <code class="language-plaintext highlighter-rouge">bzip2</code>, <code class="language-plaintext highlighter-rouge">xxd</code></p><h2 id="有帮助的阅读资料-2">有帮助的阅读资料</h2><p><a href="https://en.wikipedia.org/wiki/Rot13">Rot13 on Wikipedia</a></p><h2 id="我不知道我在说什么-3">我不知道我在说什么</h2><p>虽然这个题其实写个 <code class="language-plaintext highlighter-rouge">C</code> 或者用 <code class="language-plaintext highlighter-rouge">Python</code> 可能更方便那么一点点。。。</p><p>这个旋转13个位置实际上是一种简单的加密方法，指将前13个字母和后13个字母调换。</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="https://en.wikipedia.org/wiki/File:ROT13_table_with_example.svg" alt="" /></p><p>WikiPedia 甚至给出了解法，在 Linux 可以使用 <code class="language-plaintext highlighter-rouge">tr</code> 命令。</p><p>在此题中，将字母互相 map 出对应关系即可。</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="c"># Map upper case A-Z to N-ZA-M and lower case a-z to n-za-m</span>
+<span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">tr</span> <span class="s1">'A-Za-z'</span> <span class="s1">'N-ZA-Mn-za-m'</span>
+</pre></table></code></div></div><p>输出</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+</pre></table></code></div></div><p>By the way，Wikipedia 中也给出了 Vim/Emacs 和 Python 的示例代码，将 Python 代码一并贴出</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">codecs</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">codecs</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'rot13'</span><span class="p">))</span>
+</pre></table></code></div></div><p>（我是 API Caller 我自豪）</p><p>Or</p><div class="language-c highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre><td class="rouge-code"><pre><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">char</span><span class="o">*</span> <span class="nf">decodeRot13</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ori</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ans</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">65</span> <span class="o">&amp;&amp;</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">77</span><span class="p">)</span> <span class="c1">// if character between A-M </span>
+            <span class="c1">// map to N-Z</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">78</span> <span class="o">&amp;&amp;</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="c1">//if between N-Z</span>
+            <span class="c1">// map to A-M</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">97</span> <span class="o">&amp;&amp;</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">109</span><span class="p">)</span> <span class="c1">// if character between a-m </span>
+            <span class="c1">// map to n-z</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">110</span> <span class="o">&amp;&amp;</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">122</span><span class="p">)</span> <span class="c1">//if between n-z</span>
+            <span class="c1">// map to a-m</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        
+        
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        
+    <span class="p">}</span>
+    <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">ori</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh"</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">ans</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+    <span class="n">decodeRot13</span><span class="p">(</span><span class="n">ori</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>其实我不当 API Caller 也是可以的（</p><p>Anyway，密码是</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+</pre></table></code></div></div><h1 id="level-12--level-13">Level 12 → Level 13</h1><h2 id="目标-4">目标</h2><p>下一关的密码存储在文件data.txt中，这是一个经过反复压缩的文件的十六进制转储。对于这一关，在/tmp下创建一个目录可能是有用的，你可以使用<code class="language-plaintext highlighter-rouge">mkdir</code>在其中工作。例如： <code class="language-plaintext highlighter-rouge">mkdir /tmp/myname123</code> 。然后用<code class="language-plaintext highlighter-rouge">cp</code>复制数据文件，用<code class="language-plaintext highlighter-rouge">mv</code>重命名它（请阅读手册！）</p><h2 id="解决这一关也许需要的命令-4">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">sort</code>, <code class="language-plaintext highlighter-rouge">uniq</code>, <code class="language-plaintext highlighter-rouge">strings</code>, <code class="language-plaintext highlighter-rouge">base64</code>, <code class="language-plaintext highlighter-rouge">tr</code>, <code class="language-plaintext highlighter-rouge">tar</code>, <code class="language-plaintext highlighter-rouge">gzip</code>, <code class="language-plaintext highlighter-rouge">bzip2</code>, <code class="language-plaintext highlighter-rouge">xxd</code>, <code class="language-plaintext highlighter-rouge">mkdir</code>, <code class="language-plaintext highlighter-rouge">cp</code>, <code class="language-plaintext highlighter-rouge">mv</code>, <code class="language-plaintext highlighter-rouge">file</code></p><h2 id="有帮助的阅读资料-3">有帮助的阅读资料</h2><p><a href="https://en.wikipedia.org/wiki/Hex_dump">Hex dump on Wikipedia</a></p><h2 id="我不知道我在说什么-4">我不知道我在说什么</h2><p>按照说明，我们需要创建一个文件夹，Banner 中已经给出，用<code class="language-plaintext highlighter-rouge">mktemp -d</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mktemp</span> <span class="nt">-d</span>
+/tmp/tmp.0CC45KW14Z
+</pre></table></code></div></div><p>首先给出的是一个 Hexdump 文本，用 <code class="language-plaintext highlighter-rouge">xxd</code> 命令将其重新打包为二进制文件</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>xxd <span class="nt">-r</span> &lt; data.txt <span class="o">&gt;</span> /tmp/tmp.0CC45KW14Z/output
+</pre></table></code></div></div><p>然后我们看一下文件类型</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">cd</span> /tmp/tmp.0CC45KW14Z
+<span class="nv">$ </span>file output
+</pre></table></code></div></div><p>显示为 <code class="language-plaintext highlighter-rouge">gzip</code> 压缩后的文件</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>output: gzip compressed data, was "data2.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+</pre></table></code></div></div><p>再解压看看</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mv </span>output data2.bin.gz
+<span class="nv">$ </span><span class="nb">gunzip </span>data2.bin
+</pre></table></code></div></div><p>还就那个套娃</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>file data2.bin 
+data2.bin: bzip2 compressed data, block size <span class="o">=</span> 900k
+<span class="nv">$ </span><span class="nb">mv </span>data2.bin data2.bin.bz2
+<span class="nv">$ </span>bunzip2 data2.bin.bz2
+<span class="nv">$ </span>file data2.bin 
+data2.bin: bzip2 compressed data, block size <span class="o">=</span> 900k
+<span class="nv">$ </span><span class="nb">mv </span>data2.bin data2.bin.gz
+<span class="nv">$ </span><span class="nb">gunzip </span>data2.bin.gz
+<span class="nv">$ </span>file data2.bin 
+data2.bin: POSIX <span class="nb">tar </span>archive <span class="o">(</span>GNU<span class="o">)</span>
+<span class="nv">$ </span><span class="nb">mv </span>data2.bin data2.tar
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> data2.tar
+<span class="nv">$ </span>file data5.bin 
+data5.bin: POSIX <span class="nb">tar </span>archive <span class="o">(</span>GNU<span class="o">)</span>
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> data5.tar
+<span class="nv">$ </span>file data6.bin 
+data6.bin: bzip2 compressed data, block size <span class="o">=</span> 900k
+<span class="nv">$ </span><span class="nb">mv </span>data6.bin data6.bin.bz2
+<span class="nv">$ </span>bunzip2 data6.bin.bz2
+<span class="nv">$ </span>file data6.bin 
+data6.bin: POSIX <span class="nb">tar </span>archive <span class="o">(</span>GNU<span class="o">)</span>
+<span class="nv">$ </span><span class="nb">mv </span>data6.bin data6.tar
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> data6.tar
+<span class="nv">$ </span>file data8.bin 
+data8.bin: <span class="nb">gzip </span>compressed data, was <span class="s2">"data9.bin"</span>, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+<span class="nv">$ </span><span class="nb">mv </span>data8.bin data8.bin.gz
+<span class="nv">$ </span><span class="nb">gunzip </span>data8.bin.gz
+<span class="nv">$ </span>file data8.bin 
+data8.bin: ASCII text
+</pre></table></code></div></div><p>WOW! Finally!</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">cat </span>data8.bin
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+</pre></table></code></div></div><p>单纯为这道题其实可以用脚本搞定，不过我懒，就不写了。</p><p>所以密码就是</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+</pre></table></code></div></div><h1 id="level-13--level-14">Level 13 → Level 14</h1><h2 id="目标-5">目标</h2><p>下一层的密码存储在<code class="language-plaintext highlighter-rouge">/etc/bandit_pass/bandit14</code>中，只有用户<code class="language-plaintext highlighter-rouge">bandit14</code>才能读取。对于这一层，你不会得到下一层的密码，但你会得到一个私有的 SSH 密钥，可以用来登录下一层。注意：localhost是指你正在工作的机器的主机名。</p><h2 id="解决这一关也许需要的命令-5">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">telnet</code>, <code class="language-plaintext highlighter-rouge">nc</code>, <code class="language-plaintext highlighter-rouge">openssl</code>, <code class="language-plaintext highlighter-rouge">s_client</code>, <code class="language-plaintext highlighter-rouge">nmap</code></p><h2 id="有帮助的阅读资料-4">有帮助的阅读资料</h2><p><a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys">SSH/OpenSSH/Keys</a></p><h2 id="我不知道我在说什么-5">我不知道我在说什么</h2><p>总算来点不一样的东西了！</p><p>他直接把私钥给我们了。直接登录好了</p><p>把给的私钥复制到本机，然后登录</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>vim sshkey.private
+<span class="nv">$ </span><span class="nb">chmod </span>600 sshkey.private
+<span class="nv">$ </span>ssh <span class="nt">-i</span> sshkey.private bandit14@bandit.labs.overthewire.org <span class="nt">-p</span> 2220
+</pre></table></code></div></div><p>登进来直接 <code class="language-plaintext highlighter-rouge">cat</code> 就好了</p><p>拿到 flag</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+</pre></table></code></div></div><h1 id="level-14--level-15">Level 14 → Level 15</h1><h2 id="目标-6">目标</h2><p>通过向localhost上的30000端口提交当前级别的密码，可以找回下一级别的密码。</p><h2 id="解决这一关也许需要的命令-6">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">telnet</code>, <code class="language-plaintext highlighter-rouge">nc</code>, <code class="language-plaintext highlighter-rouge">openssl</code>, <code class="language-plaintext highlighter-rouge">s_client</code>, <code class="language-plaintext highlighter-rouge">nmap</code></p><h2 id="有帮助的阅读资料-5">有帮助的阅读资料</h2><ul><li><a href="https://www.youtube.com/watch?v=7_LPdttKXPc">How the Internet works in 5 minutes (YouTube)</a> (Not completely accurate, but good enough for beginners)<li><a href="http://computer.howstuffworks.com/web-server5.htm">IP Addresses</a><li><a href="https://en.wikipedia.org/wiki/IP_address">IP Address on Wikipedia</a><li><a href="https://en.wikipedia.org/wiki/Localhost">Localhost on Wikipedia</a><li><a href="http://computer.howstuffworks.com/web-server8.htm">Ports</a><li><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">Port (computer networking) on Wikipedia</a></ul><h2 id="我不知道我在说什么-6">我不知道我在说什么</h2><p>说到底，这一关要向上发一个数据包</p><p>单纯掌握 <code class="language-plaintext highlighter-rouge">nc</code> 命令罢了，对 CTF 但凡有一点点了解应该也知道这个</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">echo </span>4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e | nc localhost 30000
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+</pre></table></code></div></div><p>就这么简单，flag为</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>BfMYroe26WYalil77FoDi9qh59eK5xNr
+</pre></table></code></div></div><h1 id="level-15--level-16">Level 15 → Level 16</h1><h2 id="目标-7">目标</h2><p>通过SSL加密向localhost上的30001端口提交当前级别的密码，可以找回下一级别的密码。</p><p>帮助说明：获得 <code class="language-plaintext highlighter-rouge">HEARTBEATING</code>和 <code class="language-plaintext highlighter-rouge">Read R BLOCK</code>？使用<code class="language-plaintext highlighter-rouge">-ign_eof</code>并阅读<code class="language-plaintext highlighter-rouge">man</code> 手册中的 <code class="language-plaintext highlighter-rouge">CONNECTED COMMANDS</code>部分。在 <code class="language-plaintext highlighter-rouge">R </code>和 <code class="language-plaintext highlighter-rouge">Q </code>旁边，<code class="language-plaintext highlighter-rouge">B </code>命令在这个版本的命令中也可以使用……</p><h2 id="解决这一关也许需要的命令-7">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">telnet</code>, <code class="language-plaintext highlighter-rouge">nc</code>, <code class="language-plaintext highlighter-rouge">openssl</code>, <code class="language-plaintext highlighter-rouge">s_client</code>, <code class="language-plaintext highlighter-rouge">nmap</code></p><h2 id="有帮助的阅读资料-6">有帮助的阅读资料</h2><ul><li><a href="https://en.wikipedia.org/wiki/Secure_Socket_Layer">Secure Socket Layer/Transport Layer Security on Wikipedia</a><li><a href="https://www.feistyduck.com/library/openssl-cookbook/online/ch-testing-with-openssl.html">OpenSSL Cookbook - Testing with OpenSSL</a></ul><h2 id="我不知道我在说什么-7">我不知道我在说什么</h2><p>其实提示已经给的太多了。</p><p>要用<code class="language-plaintext highlighter-rouge">openssl</code> 连接远端</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">echo </span>BfMYroe26WYalil77FoDi9qh59eK5xNr | openssl s_client <span class="nt">-connect</span> localhost:30001 <span class="nt">-ign_eof</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">-ign_eof</code> 指当远端发送 <code class="language-plaintext highlighter-rouge">EOF</code> 信号后自动断开连接</p><p>忽略一大堆输出之后，给了我们密码</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+closed
+</pre></table></code></div></div><p>所以密码就是</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>cluFn7wTiGryunymYOu4RcffSxQluehd
+</pre></table></code></div></div><h1 id="level-16--level-17">Level 16 → Level 17</h1><h2 id="目标-8">目标</h2><p>通过向 <code class="language-plaintext highlighter-rouge">localhost</code> 上 31000 到 32000 范围内的端口提交当前级别的密码，就可以获取下一级别的凭证。首先找出这些端口中哪些有服务器在监听。然后找出其中哪些使用SSL，哪些不使用。只有 1 台服务器会给出下一个凭证，其他服务器只会把你发给它的任何东西回传给你。</p><h2 id="解决这一关也许需要的命令-8">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">telnet</code>, <code class="language-plaintext highlighter-rouge">nc</code>, <code class="language-plaintext highlighter-rouge">openssl</code>, <code class="language-plaintext highlighter-rouge">s_client</code>, <code class="language-plaintext highlighter-rouge">nmap</code></p><h2 id="有帮助的阅读资料-7">有帮助的阅读资料</h2><ul><li><a href="https://en.wikipedia.org/wiki/Port_scanner">Port scanner on Wikipedia</a></ul><h2 id="我不知道我在说什么-8">我不知道我在说什么</h2><p>毫无疑问，这关要扫描端口了。终于该 <code class="language-plaintext highlighter-rouge">nmap</code> 出场了</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>nmap <span class="nt">-sV</span> <span class="nt">-p31000-32000</span> localhost
+
+Starting Nmap 7.40 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2020-12-02 16:11 CET
+Nmap scan report <span class="k">for </span>localhost <span class="o">(</span>127.0.0.1<span class="o">)</span>
+Host is up <span class="o">(</span>0.00032s latency<span class="o">)</span><span class="nb">.</span>
+Not shown: 996 closed ports
+PORT      STATE SERVICE     VERSION
+31046/tcp open  <span class="nb">echo
+</span>31518/tcp open  ssl/echo
+31691/tcp open  <span class="nb">echo
+</span>31790/tcp open  ssl/unknown
+31960/tcp open  <span class="nb">echo
+</span>1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port31790-TCP:V<span class="o">=</span>7.40%T<span class="o">=</span>SSL%I<span class="o">=</span>7%D<span class="o">=</span>12/2%Time<span class="o">=</span>5FC7AEBB%P<span class="o">=</span>x86_64-pc-linux-g
+SF:nu%r<span class="o">(</span>GenericLines,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20cu
+SF:rrent</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>GetRequest,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the
+SF:</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>HTTPOptions,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Plea
+SF:se</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>RTSPRequest,
+SF:31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\</span><span class="s2">
+SF:n"</span><span class="o">)</span>%r<span class="o">(</span>Help,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">
+SF:20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>SSLSessionReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20
+SF:correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>TLSSessionReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please
+SF:</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>Kerberos,31,<span class="s2">"W
+SF:rong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r
+SF:<span class="o">(</span>FourOhFourRequest,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20c
+SF:urrent</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>LPDString,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the
+SF:</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>LDAPSearchReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Pl
+SF:ease</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>SIPOptions
+SF:,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password
+SF:</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span><span class="p">;</span>
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>
+Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>90.07 seconds
+
+</pre></table></code></div></div><p>扫了好一会才结束</p><p>这样可以看出只有 31790 端口比较可疑</p><p>直接连接</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">echo </span>cluFn7wTiGryunymYOu4RcffSxQluehd | openssl s_client <span class="nt">-connect</span> localhost:31790 <span class="nt">-ign_eof</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre><td class="rouge-code"><pre>Correct!
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+
+closed
+
+</pre></table></code></div></div><p>拿到了一个 SSH 私钥</p><p>嘛，也就相当于我们拿到密码了吧。</p><p>贴下面</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre>-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+</pre></table></code></div></div><h1 id="level-17--level-18">Level 17 → Level 18</h1><h2 id="目标-9">目标</h2><p>家目录中有2个文件：passwords.old和passwords.new。下一级的密码在 passwords.new 中，是 passwords.old 和 passwords.new 之间唯一被修改的一行。</p><p>注意：如果你解决了这一关，在尝试登录 bandit18 时看到’Byebye！’，这与下一关 bandit19 有关。</p><h2 id="解决这一关也许需要的命令-9">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">cat</code>, <code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">ls</code>, <code class="language-plaintext highlighter-rouge">diff</code></p><h2 id="我不知道我在说什么-9">我不知道我在说什么</h2><p>一个 <code class="language-plaintext highlighter-rouge">diff</code> 解决战斗</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>diff passwords.new passwords.old 
+42c42
+&lt; kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+<span class="nt">---</span>
+<span class="o">&gt;</span> w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+</pre></table></code></div></div><p>得到 Key 为</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+</pre></table></code></div></div><h1 id="level-18--level-19">Level 18 → Level 19</h1><h2 id="目标-10">目标</h2><p>下一级的密码存储在家目录里的readme文件中。不幸的是，有人修改了<code class="language-plaintext highlighter-rouge">.bashrc</code>，当你用 SSH 登录时，会将你注销。</p><h2 id="解决这一关也许需要的命令-10">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code>, <code class="language-plaintext highlighter-rouge">ls</code>, <code class="language-plaintext highlighter-rouge">cat</code></p><h2 id="我不知道我在说什么-10">我不知道我在说什么</h2><p>SSH连接的时候是可以带上命令的，所以就很简单了</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>ssh bandit18@bandit.labs.overthewire.org <span class="nt">-p</span> 2220 <span class="nb">cat </span>readme
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org<span class="s1">'s password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+</span></pre></table></code></div></div><p>得到 Key 为</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+</pre></table></code></div></div><h1 id="level-19--level-20">Level 19 → Level 20</h1><h2 id="目标-11">目标</h2><p>为了获得下一级别的访问权限，你应该使用家目录中的<code class="language-plaintext highlighter-rouge">setuid</code>二进制文件。在没有参数的情况下执行它以了解如何使用它。在使用了<code class="language-plaintext highlighter-rouge">setuid</code>二进制文件之后，可以在通常的地方 (/etc/bandit_pass) 找到这一层的密码。</p><h2 id="有帮助的阅读资料-8">有帮助的阅读资料</h2><p><a href="https://en.wikipedia.org/wiki/Setuid">setuid on Wikipedia</a></p><h2 id="我不知道我在说什么-11">我不知道我在说什么</h2><p>我们先执行一下</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>./bandit20-do 
+Run a <span class="nb">command </span>as another user.
+  Example: ./bandit20-do <span class="nb">id</span>
+</pre></table></code></div></div><p>很有意思，可以以其他用户身份执行命令</p><p>这里有一个知识点，<code class="language-plaintext highlighter-rouge">setuid</code></p><p><code class="language-plaintext highlighter-rouge">setuid</code> 和 <code class="language-plaintext highlighter-rouge">setgid</code> 是一种特殊权限，可以使用拥有者的权限去执行。</p><p>因此，<code class="language-plaintext highlighter-rouge">./bandit20-do id</code> 输出</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>./bandit20-do <span class="nb">id
+</span><span class="nv">uid</span><span class="o">=</span>11019<span class="o">(</span>bandit19<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>11019<span class="o">(</span>bandit19<span class="o">)</span> <span class="nv">euid</span><span class="o">=</span>11020<span class="o">(</span>bandit20<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>11019<span class="o">(</span>bandit19<span class="o">)</span>
+</pre></table></code></div></div><p>因此可以轻松得到密码</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>./bandit20-do <span class="nb">cat</span> /etc/bandit_pass/bandit20 
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+</pre></table></code></div></div><p>密码为</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+</pre></table></code></div></div><h1 id="level-20--level-21">Level 20 → Level 21</h1><h2 id="目标-12">目标</h2><p>在家目录中有一个 setuid 二进制文件，它的作用是：在你指定的命令行参数的端口上与 localhost 建立一个连接。然后，它从连接中读取一行文本，并将其与上一级的密码 (bandit20) 进行比较。如果密码正确，它将传输下一级别的密码（bandit21）。</p><p>注意：尝试连接到你自己的网络守护进程，看看它是否如你所想的那样工作。</p><h2 id="解决这一关也许需要的命令-11">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">ssh</code> <code class="language-plaintext highlighter-rouge">nc</code> <code class="language-plaintext highlighter-rouge">cat</code> <code class="language-plaintext highlighter-rouge">bash</code> <code class="language-plaintext highlighter-rouge">screen</code> <code class="language-plaintext highlighter-rouge">tmux</code> <code class="language-plaintext highlighter-rouge">Unix 'job control' (bg,fg,&amp;,CTRL-Z)</code></p><h2 id="我不知道我在说什么-12">我不知道我在说什么</h2><p>这关挺有意思的</p><p><code class="language-plaintext highlighter-rouge">nc</code> 命令可以充当服务器进行监听，但显然我们不能在同一个终端里开两个程序。所以我们需要一些辅助手段。</p><p><code class="language-plaintext highlighter-rouge">screen</code> 命令可以轻松完成这个工作。当然也给出了 <code class="language-plaintext highlighter-rouge">tmux</code> 也是 OK 的。</p><p>关于这个命令我看过一篇非常好的文章，是 IBM Developer 上放出的<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/">Linux 技巧：使用 screen 管理你的远程会话</a>，我当年是看这篇文章学会使用这个命令的。这篇文章现在不特地搜索的话已经不会出现在搜索引擎前几页了。虽然 <code class="language-plaintext highlighter-rouge">tmux</code> 真的很高端就是了……</p><p>Anyway，来看过程</p><p>我们需要新建一个会话来运行 <code class="language-plaintext highlighter-rouge">nc</code> 接收并发送数据。因此</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>screen <span class="nt">-S</span> nc
+</pre></table></code></div></div><p>打开一个新会话，然后运行 <code class="language-plaintext highlighter-rouge">nc</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>nc <span class="nt">-l</span> <span class="nt">-p</span> 33333
+</pre></table></code></div></div><p>然后把上一关的密码粘贴进去</p><p>现在 <code class="language-plaintext highlighter-rouge">C-a d</code> 返回我们原来的会话，运行</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>./suconnect 33333
+</pre></table></code></div></div><p>他读到了数据。</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>bandit20@bandit:~<span class="nv">$ </span>./suconnect 33333
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+</pre></table></code></div></div><p>进到我们创建的会话找密码吧</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>screen <span class="nt">-r</span> nc
+<span class="nv">$$</span> nc <span class="nt">-l</span> <span class="nt">-p</span> 33333
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+</pre></table></code></div></div><p>得到密码！</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+</pre></table></code></div></div><h1 id="level-21--level-22">Level 21 → Level 22</h1><h2 id="目标-13">目标</h2><p>计划任务管理器 cron 每隔一段时间就会自动运行一个程序。在 /etc/cron.d/ 中查看配置，看看正在执行什么命令。</p><h2 id="解决这一关也许需要的命令-12">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">cron</code>, <code class="language-plaintext highlighter-rouge">crontab</code>, <code class="language-plaintext highlighter-rouge">crontab(5)</code> (用 <code class="language-plaintext highlighter-rouge">man 5 crontab</code> 来查看)</p><h2 id="我不知道我在说什么-13">我不知道我在说什么</h2><p>说来惭愧，我知道 <code class="language-plaintext highlighter-rouge">cron</code> 计划任务很有用，但我真的从来没用过。</p><p>我眼前唯一能想到的就是写个脚本自动续证书，但是在服务器端用 <code class="language-plaintext highlighter-rouge">Caddy</code> 做反向代理之后连这个需求也没了。</p><p>其实这道题根本不需要对 <code class="language-plaintext highlighter-rouge">cron</code> 有什么了解，因为题目已经把需要的都告诉你了。</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre>bandit21@bandit:~<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> /etc/cron.d/
+total 24
+<span class="nt">-rw-r--r--</span> 1 root root  62 May 14  2020 cronjob_bandit15_root
+<span class="nt">-rw-r--r--</span> 1 root root  62 Jul 11 15:56 cronjob_bandit17_root
+<span class="nt">-rw-r--r--</span> 1 root root 120 May  7  2020 cronjob_bandit22
+<span class="nt">-rw-r--r--</span> 1 root root 122 May  7  2020 cronjob_bandit23
+<span class="nt">-rw-r--r--</span> 1 root root 120 May 14  2020 cronjob_bandit24
+<span class="nt">-rw-r--r--</span> 1 root root  62 May 14  2020 cronjob_bandit25_root
+bandit21@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /etc/cron.d/cronjob_bandit22 
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+bandit21@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /usr/bin/cronjob_bandit22.sh 
+<span class="c">#!/bin/bash</span>
+<span class="nb">chmod </span>644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+<span class="nb">cat</span> /etc/bandit_pass/bandit22 <span class="o">&gt;</span> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+</pre></table></code></div></div><p>追查一路直接拿到密码。</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+</pre></table></code></div></div><h1 id="level-22--level-23">Level 22 → Level 23</h1><h2 id="目标-14">目标</h2><p>计划任务管理器 <code class="language-plaintext highlighter-rouge">cron</code> 每隔一段时间就会自动运行一个程序。在 /etc/cron.d/ 中查看配置，看看正在执行什么命令。</p><p>注意：看别人写的shell脚本是一项非常有用的技能。本关的脚本是故意让人容易阅读的。如果你在理解它的作用方面有问题，可以试着执行它，看看它打印的调试信息。</p><h2 id="解决这一关也许需要的命令-13">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">cron</code>, <code class="language-plaintext highlighter-rouge">crontab</code>, <code class="language-plaintext highlighter-rouge">crontab(5)</code> (用 <code class="language-plaintext highlighter-rouge">man 5 crontab</code> 来查看)</p><h2 id="我不知道我在说什么-14">我不知道我在说什么</h2><p>追查一路，发现一个脚本</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre>bandit22@bandit:~<span class="nv">$ </span><span class="nb">ls</span> /etc/cron.d
+cronjob_bandit15_root  cronjob_bandit22  cronjob_bandit24
+cronjob_bandit17_root  cronjob_bandit23  cronjob_bandit25_root
+bandit22@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /etc/cron.d/cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null    
+bandit22@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /usr/bin/cronjob_bandit23.sh 
+<span class="c">#!/bin/bash</span>
+
+<span class="nv">myname</span><span class="o">=</span><span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span>
+<span class="nv">mytarget</span><span class="o">=</span><span class="si">$(</span><span class="nb">echo </span>I am user <span class="nv">$myname</span> | <span class="nb">md5sum</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1<span class="si">)</span>
+
+<span class="nb">echo</span> <span class="s2">"Copying passwordfile /etc/bandit_pass/</span><span class="nv">$myname</span><span class="s2"> to /tmp/</span><span class="nv">$mytarget</span><span class="s2">"</span>
+
+<span class="nb">cat</span> /etc/bandit_pass/<span class="nv">$myname</span> <span class="o">&gt;</span> /tmp/<span class="nv">$mytarget</span>
+</pre></table></code></div></div><p>这就非常简单了，我们模拟一下好了，当然用户名字应该是 <code class="language-plaintext highlighter-rouge">bandit23</code></p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>bandit22@bandit:~<span class="nv">$ </span><span class="nb">echo </span>I am user bandit23 | <span class="nb">md5sum</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+</pre></table></code></div></div><p>直接到手！</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+</pre></table></code></div></div><h1 id="level-23--level-24">Level 23 → Level 24</h1><h2 id="目标-15">目标</h2><p>基于时间的作业调度器cron每隔一段时间就会自动运行一个程序。在/etc/cron.d/中查看配置，看看正在执行什么命令。</p><p>注意：这一关需要你创建自己的第一个shell-script，这是一个非常大的步骤，你应该在/etc/cron.d/中查看配置，看看正在执行什么命令。这是非常重要的一步，当你通过这一关时，你应该为自己感到骄傲。</p><p>注意2: 记住你的shell脚本一旦执行就会被删除，所以你可能想保留一份副本……</p><h2 id="解决这一关也许需要的命令-14">解决这一关也许需要的命令</h2><p><code class="language-plaintext highlighter-rouge">cron</code>, <code class="language-plaintext highlighter-rouge">crontab</code>, <code class="language-plaintext highlighter-rouge">crontab(5)</code> (用 <code class="language-plaintext highlighter-rouge">man 5 crontab</code> 来查看)</p><h2 id="我不知道我在说什么-15">我不知道我在说什么</h2><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre><td class="rouge-code"><pre>bandit23@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /etc/cron.d/cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+bandit23@bandit:~<span class="nv">$ </span><span class="nb">cat</span> /usr/bin/cronjob_bandit24.sh 
+<span class="c">#!/bin/bash</span>
+
+<span class="nv">myname</span><span class="o">=</span><span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span>
+
+<span class="nb">cd</span> /var/spool/<span class="nv">$myname</span>
+<span class="nb">echo</span> <span class="s2">"Executing and deleting all scripts in /var/spool/</span><span class="nv">$myname</span><span class="s2">:"</span>
+<span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> .<span class="k">*</span><span class="p">;</span>
+<span class="k">do
+    if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"."</span> <span class="nt">-a</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">".."</span> <span class="o">]</span><span class="p">;</span>
+    <span class="k">then
+        </span><span class="nb">echo</span> <span class="s2">"Handling </span><span class="nv">$i</span><span class="s2">"</span>
+        <span class="nv">owner</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">stat</span> <span class="nt">--format</span> <span class="s2">"%U"</span> ./<span class="nv">$i</span><span class="si">)</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${</span><span class="nv">owner</span><span class="k">}</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"bandit23"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+            </span><span class="nb">timeout</span> <span class="nt">-s</span> 9 60 ./<span class="nv">$i</span>
+        <span class="k">fi
+        </span><span class="nb">rm</span> <span class="nt">-f</span> ./<span class="nv">$i</span>
+    <span class="k">fi
+done
+</span>bandit23@bandit:~<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-ld</span> /var/spool/bandit24
+drwxrwx-wx 43 root bandit24 4096 Dec  3 16:04 /var/spool/bandit24
+</pre></table></code></div></div><p>最有意思的莫过于给写权限却不给读权限。</p><p>Anyway，这个必须写脚本。</p><p>目的是用脚本让 <code class="language-plaintext highlighter-rouge">bandit24</code> 用户执行脚本，就可以将密码输出给我了。</p><p>创建一个工作目录吧，然后脚本写起来。</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mktemp</span> <span class="nt">-d</span>
+/tmp/tmp.vcwnLe4j7i
+<span class="nv">$ </span><span class="nb">cd</span> /tmp/tmp.vcwnLe4j7i
+</pre></table></code></div></div><p>创建一个脚本，以及一个输出文件</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">touch </span>password
+<span class="nv">$ </span>vim getpass.sh
+<span class="nv">$ </span><span class="nb">chmod </span>777 getpass.sh
+<span class="c"># change the directory permissions</span>
+<span class="nv">$ </span><span class="nb">chmod </span>777 <span class="nb">.</span>
+<span class="nv">$ </span><span class="nb">cp </span>getpass.sh /var/spool/bandit24
+</pre></table></code></div></div><p>脚本如下</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+        
+<span class="nb">cat</span> /etc/bandit_pass/bandit24 <span class="o">&gt;</span> /tmp/tmp.vcwnLe4j7i/password                                       
+</pre></table></code></div></div><p>把密码输出</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">cat </span>password 
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+</pre></table></code></div></div><p>得到密码</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+</pre></table></code></div></div><h1 id="level-24--level-25">Level 24 → Level 25</h1><h2 id="目标-16">目标</h2><p>一个守护进程在端口30002上监听，如果给了bandit24的密码和一个秘密的4位数字密码，就会给你bandit25的密码。除了通过所有的10000个组合，也就是所谓的蛮力逼迫，是没有办法获取密码的。</p><h2 id="我不知道我在说什么-16">我不知道我在说什么</h2></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/linux/'>Linux</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/linux/" class="post-tag no-text-decoration" >linux</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=OverTheWire —— 一个 Linux 真娱乐网站 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=OverTheWire —— 一个 Linux 真娱乐网站 - Pan Xiao's Blog&u=https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=OverTheWire —— 一个 Linux 真娱乐网站 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/">大编程时代，每个做IT的都该会点</a><li><a href="/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/">EX200模拟题解</a><li><a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%AF%87/">家庭网络大改造-网络设计篇</a><li><a href="/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/">一个小规模网络配置的一点点坑</a><li><a href="/posts/Ansible-%E7%AC%94%E8%AE%B0/">Ansible 笔记</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/"><div class="card-body"> <span class="timeago small" > Dec 20, 2020 <i class="unloaded">2020-12-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>大编程时代，每个做IT的都该会点</h3><div class="text-muted small"><p> 比较少见的想写一篇随笔 说起来也比较奇怪，因为我想着把家里的网络从 OpenWRT 彻底迁出来，想用 pfSence 或者一个 Linux 来做网关。 因为 OpenWRT 一直在用别人做好的镜像，而他更多的作为一个家用路由的系统，一些功能不是很全，还有一些东西并不是十分好用。 例如，我需要一个动态路由协议的栈，让我在 GNS3 里做网络实验的路由和主机们连得了公网，并且做到动态更新，...</p></div></div></a></div><div class="card"> <a href="/posts/RHCSA-%E9%80%9A%E8%BF%87%E4%BB%A5%E5%90%8E/"><div class="card-body"> <span class="timeago small" > Mar 20 <i class="unloaded">2021-03-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>RHCSA 通过以后</h3><div class="text-muted small"><p> 正如标题所说，我去考 RHCSA 了，并且考下来了。 如果是我自己掏钱考的话，那我必不可能只掏钱考一个 CSA 的，说实在话太基础了，我感觉一个稍微有段时间的 Linux 使用经验的人，配合 Google 随便就能找得到的 EX200 Dump 应该都能非常轻松的拿下。 至于我的分数？真不是凡尔赛，满分 300 拿了 300。 我想对我个人来讲多多少少是会有些沾沾自喜的，但我也很明...</p></div></div></a></div><div class="card"> <a href="/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/"><div class="card-body"> <span class="timeago small" > Dec 10, 2020 <i class="unloaded">2020-12-10T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>EX200模拟题解</h3><div class="text-muted small"><p> 2021-03-20 更新: RHCSA 已通过，不再更新 2021-03-16 更新: 调整文章部分顺序，修正部分题解 本周末我将去参加考试，之后大概率不会再更新此文 2021-01-22 更新，容器部分做法 接下来会重新整理此文 此题解配合某实验环境使用，恕不提供 EX200 Dump，仅作为参考，不作为标准答案提供。 其实你们去 Google 都能...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Docker-%E7%AC%94%E8%AE%B0/" class="btn btn-outline-primary"><p>Docker 笔记</p></a> <a href="/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" class="btn btn-outline-primary"><p>EX200模拟题解</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="font-italic text-center text-muted small"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> var options = { scriptUrl: '//panxiao81.disqus.com/embed.js', disqusConfig: function() { this.page.url = 'https://www.ddupan.top/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/'; this.page.identifier = '/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/pan_xiao">Pan Xiao</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://www.ddupan.top{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>

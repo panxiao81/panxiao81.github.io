@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.6.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="一个小规模网络配置的一点点坑" /><meta name="author" content="Pan Xiao" /><meta property="og:locale" content="en_US" /><meta name="description" content="我好歹还是学网络的，配个最基础的三层交换网络都能遇上一堆问题，我太菜了，我自裁罢" /><meta property="og:description" content="我好歹还是学网络的，配个最基础的三层交换网络都能遇上一堆问题，我太菜了，我自裁罢" /><link rel="canonical" href="https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/" /><meta property="og:url" content="https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/" /><meta property="og:site_name" content="Pan Xiao’s Blog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-12-30T00:00:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="一个小规模网络配置的一点点坑" /><meta name="twitter:site" content="@pan_xiao" /><meta name="twitter:creator" content="@Pan Xiao" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"我好歹还是学网络的，配个最基础的三层交换网络都能遇上一堆问题，我太菜了，我自裁罢","@type":"BlogPosting","headline":"一个小规模网络配置的一点点坑","dateModified":"2020-12-30T02:27:06+08:00","datePublished":"2020-12-30T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/"},"url":"https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/","author":{"@type":"Person","name":"Pan Xiao"},"@context":"https://schema.org"}</script><title>一个小规模网络配置的一点点坑 | Pan Xiao's Blog</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script> <script src="https://cdn.jsdelivr.net/gh/panxiao81/live2d-widget@latest/autoload.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Pan Xiao's Blog</a></div><div class="site-subtitle font-italic">IT, Network and Music</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Course/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-file-audio ml-xl-3 mr-xl-3 unloaded"></i> <span>MIXING COURSE</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Friends/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-user-friends ml-xl-3 mr-xl-3 unloaded"></i> <span>FRIENDS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/panxiao81" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/pan_xiao" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['pan-xiao','live.cn'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="/tabs/Friends" aria-label="friend" > <i class="fas fa-address-book"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>一个小规模网络配置的一点点坑</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>一个小规模网络配置的一点点坑</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Dec 30, 2020, 12:00 AM +0800" > Dec 30, 2020 <i class="unloaded">2020-12-30T00:00:00+08:00</i> </span> by <span class="author"> Pan Xiao </span></div><div> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Wed, Dec 30, 2020, 2:27 AM +0800" > Dec 30, 2020 <i class="unloaded">2020-12-30T02:27:06+08:00</i> </span></div></div><div class="post-content"><blockquote><p>我好歹还是学网络的，配个最基础的三层交换网络都能遇上一堆问题，我太菜了，我自裁罢</p></blockquote><p>做个网络的小实验，把一些遇到的东西记录如下</p><p>首先上拓扑</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/other/b03ae06b22f2977ac6603ba9746ed70701ec9fe438087a80c463c70afa3a69d6.png" alt="拓扑" /></p><p>Cloud 连接物理网络，路由器从物理网络获取 DHCP 作为 WAN 连接，三个接入层分别为 VLAN 10，VLAN 20 与 VLAN 30.</p><h1 id="router">Router</h1><p>DHCP 很好做</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="go">interface GigabitEthernet0/1
+ ip address dhcp
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+</span></pre></table></code></div></div><p>内网分配 <code class="language-plaintext highlighter-rouge">10.0.0.0/16</code> 地址，路由的内部接口分配 <code class="language-plaintext highlighter-rouge">10.0.1.254/24</code> ( 一开始是这么做的，然后给我自己挖了个坑 )</p><p>所以就是：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="go">interface GigabitEthernet0/0
+ ip address 10.0.1.254 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+</span></pre></table></code></div></div><p>NAT 部分我一直不太记得做法。</p><p>给端口配置 inside 与 outside。</p><p>一般来讲，给内部端口 ( LAN ) 端配 inside，给外部 ( WAN ) 端配 outside</p><p>设置规则这边，由于外网端口通过 DHCP 获取而并非静态地址，所以只能这么写:</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="go">access-list 1 permit any // 这里应该可以换成网络号也就是写成
+// access-list 1 permit 10.0.0.0 0.0.255.255
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+</span></pre></table></code></div></div><p>之后在接口配置中指定 inside 与 outside</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="go">interface GigabitEthernet0/1
+ ip nat outside
+interface GigabitEthernet0/0
+ ip nat inside
+</span></pre></table></code></div></div><h1 id="核心层">核心层</h1><p>配置 3 个 VLAN 给数据使用，默认的 Native VLAN 保持 VLAN 1 不动。</p><p>核心打开三层交换机的路由功能，指定路由的 IP 地址为默认路由。</p><p>三个 VLAN 分别分配以 VLAN 编号为网络号的网段。</p><div class="table-wrapper"><table><thead><tr><th>VLAN<th>Network ID<th>Gateway<th>Core1 IP<th>Core2 IP<tbody><tr><td>VLAN 10<td>10.0.10.0/24<td>10.0.10.254<td>10.0.10.252<td>10.0.10.253<tr><td>VLAN 20<td>10.0.20.0/24<td>10.0.20.254<td>10.0.20.252<td>10.0.20.253<tr><td>VLAN 30<td>10.0.30.0/24<td>10.0.30.254<td>10.0.30.252<td>10.0.30.253</table></div><p>将中间的两条链路配置为 Etherchannel，使用 LACP 。</p><p>配置右端交换机为根桥。</p><p>配置右端交换机为 VTP Server 下发 VLAN 信息。 ( 只是因为我懒得配 VLAN，后来发现好像手敲更快一点 )</p><p>以 Core1 为例，Core2 大致相同</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre><td class="rouge-code"><pre><span class="go">interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ channel-group 1 mode passive // 另一端配 active
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ channel-group 1 mode passive
+!
+</span><span class="gp">&lt;省略部分&gt;</span><span class="w">
+</span><span class="go">interface GigabitEthernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+</span><span class="gp">&lt;省略部分&gt;</span><span class="w">
+</span><span class="go">
+interface Vlan1
+ ip address 10.0.1.1 255.255.255.0
+ vrrp 1 ip 10.0.1.253
+!
+interface Vlan10
+ ip address 10.0.10.252 255.255.255.0
+ vrrp 10 ip 10.0.10.254
+!
+interface Vlan20
+ ip address 10.0.20.252 255.255.255.0
+ vrrp 20 ip 10.0.20.254
+!
+</span><span class="gp">&lt;省略部分&gt;</span><span class="w">
+</span><span class="go">ip route 0.0.0.0 0.0.0.0 10.0.1.254
+
+</span></pre></table></code></div></div><p>VTP 部分</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="go">vtp version 2
+</span><span class="gp">vtp mode server #</span><span class="w"> </span>其他都配 client
+<span class="go">vtp domain cisco
+vtp password cisco
+</span></pre></table></code></div></div><p>生成树部分:</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="go">spanning-tree vlan 1-4094 root primary
+</span><span class="gp">#</span><span class="w"> </span>另一个核心交换机配 secondary
+</pre></table></code></div></div><p>与路由器连接的端口可以单纯的采用 Access 模式，由三层交换机做三层转发数据包给路由器。</p><h1 id="汇聚层">汇聚层</h1><p>这个例子中汇聚层没啥用</p><p>但是需要配 VLAN 信息，不然生成树没有信息导致 VLAN 不通</p><p>可以 VTP 下发，也可以配置 transparent 模式并手动分配 VLAN</p><p>由于 DTP 协议，把两端端口都开起来 trunk 之后，汇聚层会自动 trunk，Native VLAN 也不需要改</p><h1 id="接入层">接入层</h1><p>配置上行链路 Trunk，配置 VTP 接收 VLAN，配置其他端口进相应 VLAN 即可。</p><h1 id="troubleshooting">Troubleshooting</h1><p>一开始发现外网不通，然后发现 NAT 配反了，自裁。</p><p>我也试了一下如果不在中间配置 VLAN 会导致 VLAN 内不通，大概是因为 Spanning-Tree 是 Per-VLAN Spanning-Tree，然后 <code class="language-plaintext highlighter-rouge">show spanning-tree</code> 没有信息</p><p>之后一个比较大的问题就是 Inter-VLAN 都是通的，然而外网不通。</p><p>从核心层 <code class="language-plaintext highlighter-rouge">ping</code> 我的家中网关是通的，外网访问也 OK。</p><p>客户机 <code class="language-plaintext highlighter-rouge">traceroute</code> 卡在核心层。</p><p><code class="language-plaintext highlighter-rouge">ping</code> 核心层其他内网 IP 都正常，唯独 <code class="language-plaintext highlighter-rouge">ping</code> 路由器内网接口 IP 不通。</p><p>一阵排查之后发现我犯了个大错误。</p><p>由于路由接口 IP 配的是 <code class="language-plaintext highlighter-rouge">10.0.1.0/24</code>, 路由回程是找不到路由表中 <code class="language-plaintext highlighter-rouge">10.0.10.0/24</code> 的路径的，因此他会尝试将其转发给默认路由 ( 也就是公网 )，那自然更不可能通。</p><p>去程的时候能够根据核心层交换机的路由表将数据包路由给路由器，但回程因为找不到正确路径因此转发给了外网，而我家庭网关更不可能存在这个路径，所以转发给公网，自然包就被丢弃了。</p><p>一个经典的回程路由问题。</p><p>路由一定要确保<strong>来去都能找得到路径！</strong></p><p>解决方法反而很简单，只要让路由器认为数据在二层，让他在二层内部收发包就行了，其他的事情交给三层交换机处理。</p><p>根据 VLSM，这种方法完全是可行的。</p><p>因此将接口 IP 改为 <code class="language-plaintext highlighter-rouge">10.0.1.254/16</code></p><p>接下来网络便一切正常了。</p><p>当然其实是可以配置静态路由或者用一道动态路由协议的，不过我觉得没必要，这就把简单问题搞复杂了。</p><h1 id="summary">Summary</h1><p>最近很多时候都在做 Packet Tracer，实际上这个和真机差相当远。用 GNS3 还好，大多数地方和真实设备相当。</p><p>实际上就发生过在 Packet Tracer 里通的东西实际上不可能通的事情，搞得我对这个软件很有恐惧感。</p><p>最近发现即便是搞云计算啥的，学习网络知识还是相当有用的，虽然基本上 CCNA 水平足以就是了。</p><p>还有，这东西真的超级吃内存。</p><p>我觉得我的 16GB 在复杂实验环境都根本不够，根本不够开几个虚拟机的。</p><p>而且还得多分配点资源给他们，不然卡的不行。</p><p>而且这些实验环境用 CPU 模拟的，延迟真的上天。</p><p>一个数据包从接入层发到我的家庭网关居然将近 100ms 了。</p><p>Anyway，我其实还挺喜欢网络这些东西的。</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/%E7%BD%91%E7%BB%9C/'>网络</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/network/" class="post-tag no-text-decoration" >network</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=一个小规模网络配置的一点点坑 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=一个小规模网络配置的一点点坑 - Pan Xiao's Blog&u=https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=一个小规模网络配置的一点点坑 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/">大编程时代，每个做IT的都该会点</a><li><a href="/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/">EX200模拟题解</a><li><a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%AF%87/">家庭网络大改造-网络设计篇</a><li><a href="/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/">一个小规模网络配置的一点点坑</a><li><a href="/posts/Ansible-%E7%AC%94%E8%AE%B0/">Ansible 笔记</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/"><div class="card-body"> <span class="timeago small" > Dec 20, 2020 <i class="unloaded">2020-12-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>大编程时代，每个做IT的都该会点</h3><div class="text-muted small"><p> 比较少见的想写一篇随笔 说起来也比较奇怪，因为我想着把家里的网络从 OpenWRT 彻底迁出来，想用 pfSence 或者一个 Linux 来做网关。 因为 OpenWRT 一直在用别人做好的镜像，而他更多的作为一个家用路由的系统，一些功能不是很全，还有一些东西并不是十分好用。 例如，我需要一个动态路由协议的栈，让我在 GNS3 里做网络实验的路由和主机们连得了公网，并且做到动态更新，...</p></div></div></a></div><div class="card"> <a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%AF%87/"><div class="card-body"> <span class="timeago small" > Feb 24 <i class="unloaded">2021-02-24T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>家庭网络大改造-网络设计篇</h3><div class="text-muted small"><p> 这是本系列文章的第一篇。 平时上网用的通常都是网络上很常见的旁路由网关，转发给主网关来实现科学上网，结果前日配 Linux 时候发现有时候这种方式会有点小 Bug。 我家里的网络全部跑在 192.168.50.0/24 网段内，主网关在 192.168.50.1，旁路由网关在 192.168.50.3，平时使用并没有什么太多问题，并且很好的，我可以通过指定使用哪一个网关来让不需要通过科学...</p></div></div></a></div><div class="card"> <a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E7%AF%87/"><div class="card-body"> <span class="timeago small" > Mar 3 <i class="unloaded">2021-03-03T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>家庭网络大改造-基础架构篇</h3><div class="text-muted small"><p> 通了吗？ 通了 proxmox 我日你* VMware 你也没好到哪去 pfSense 的动态路由是个大坑，单出口不用 pfSense 直接做网关也有点小坑 坑太多了，我已经不想讲都哪里遇到坑了，就单纯把配置过程稍微记录一下吧。 有些坑，官方文档都没讲明白，是我自己踩出来的。 本来我想趁这个机会把虚拟化层换成 proxmox ve，Linux 做...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/" class="btn btn-outline-primary"><p>大编程时代，每个做IT的都该会点</p></a> <a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%AF%87/" class="btn btn-outline-primary"><p>家庭网络大改造-网络设计篇</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="font-italic text-center text-muted small"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> var options = { scriptUrl: '//panxiao81.disqus.com/embed.js', disqusConfig: function() { this.page.url = 'https://www.ddupan.top/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/'; this.page.identifier = '/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/pan_xiao">Pan Xiao</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://www.ddupan.top{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>

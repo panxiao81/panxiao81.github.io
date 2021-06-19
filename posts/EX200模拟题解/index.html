@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.6.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="EX200模拟题解" /><meta name="author" content="Pan Xiao" /><meta property="og:locale" content="en_US" /><meta name="description" content="2021-03-20 更新: RHCSA 已通过，不再更新" /><meta property="og:description" content="2021-03-20 更新: RHCSA 已通过，不再更新" /><link rel="canonical" href="https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" /><meta property="og:url" content="https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" /><meta property="og:site_name" content="Pan Xiao’s Blog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-12-10T00:00:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="EX200模拟题解" /><meta name="twitter:site" content="@pan_xiao" /><meta name="twitter:creator" content="@Pan Xiao" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"2021-03-20 更新: RHCSA 已通过，不再更新","@type":"BlogPosting","headline":"EX200模拟题解","dateModified":"2021-03-21T00:10:35+08:00","datePublished":"2020-12-10T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/"},"url":"https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/","author":{"@type":"Person","name":"Pan Xiao"},"@context":"https://schema.org"}</script><title>EX200模拟题解 | Pan Xiao's Blog</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script> <script src="https://cdn.jsdelivr.net/gh/panxiao81/live2d-widget@latest/autoload.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Pan Xiao's Blog</a></div><div class="site-subtitle font-italic">IT, Network and Music</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Course/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-file-audio ml-xl-3 mr-xl-3 unloaded"></i> <span>MIXING COURSE</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/Friends/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-user-friends ml-xl-3 mr-xl-3 unloaded"></i> <span>FRIENDS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/panxiao81" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/pan_xiao" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['pan-xiao','live.cn'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a> <a href="/tabs/Friends" aria-label="friend" > <i class="fas fa-address-book"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>EX200模拟题解</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>EX200模拟题解</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Thu, Dec 10, 2020, 12:00 AM +0800" > Dec 10, 2020 <i class="unloaded">2020-12-10T00:00:00+08:00</i> </span> by <span class="author"> Pan Xiao </span></div><div> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, Mar 21, 2021, 12:10 AM +0800" > Mar 21 <i class="unloaded">2021-03-21T00:10:35+08:00</i> </span></div></div><div class="post-content"><blockquote><p>2021-03-20 更新: RHCSA 已通过，不再更新</p></blockquote><blockquote><p>2021-03-16 更新: 调整文章部分顺序，修正部分题解 本周末我将去参加考试，之后大概率不会再更新此文</p></blockquote><blockquote><p>2021-01-22 更新，容器部分做法 接下来会重新整理此文</p></blockquote><p>此题解配合某实验环境使用，恕不提供 EX200 Dump，仅作为参考，不作为标准答案提供。</p><blockquote><p>其实你们去 Google 都能搜出一大堆 EX200 Dump，题目基本没啥区别，不一定非得看我的</p></blockquote><h1 id="实验环境与注意事项">实验环境与注意事项</h1><p>实验环境为 VMware 虚拟机一台。内部已配置好实验环境。</p><p>如需内外访问，需打开宿主机系统 <code class="language-plaintext highlighter-rouge">VMnet1</code> 并分配 IP 地址为 <code class="language-plaintext highlighter-rouge">172.25.0.200/24</code></p><p>在虚拟机中 ( 以下将统称为 <code class="language-plaintext highlighter-rouge">Server1</code> )，使用 <code class="language-plaintext highlighter-rouge">rht-vmctl reset</code> 命令重置实验环境。</p><p>对本题 ( 即 <code class="language-plaintext highlighter-rouge">EX200</code> )，涉及到的主机为 <code class="language-plaintext highlighter-rouge">red</code> 与 <code class="language-plaintext highlighter-rouge">blue</code>，即：</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>rht-vmctl reset red <span class="c"># 重置 red 环境</span>
+rht-vmctl reset blue <span class="c"># 重置 blue 环境</span>
+</pre></table></code></div></div><p>之后打开 Virt Manager 即可操作实验机 ( 以下将称为 <code class="language-plaintext highlighter-rouge">red</code> 与 <code class="language-plaintext highlighter-rouge">blue</code> )</p><p>可在 <code class="language-plaintext highlighter-rouge">GNOME</code> 桌面环境中直接打开，也可在终端中输入</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>virt-manager
+</pre></table></code></div></div><p>下面将不重复写出题目需求。</p><h1 id="red">Red</h1><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>localhost login： <span class="c"># 提示登录，输入用户名是：root</span>
+Password：# 提示输入密码，密码是：redhat
+</pre></table></code></div></div><h2 id="配置网络地址">配置网络地址</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>ip a s <span class="c"># (ip address show,查看网卡和对应的IP)</span>
+</pre></table></code></div></div><p>在Linux中网卡的名称一般为 <code class="language-plaintext highlighter-rouge">eth0</code>, <code class="language-plaintext highlighter-rouge">eth1</code>, <code class="language-plaintext highlighter-rouge">eth2(ethernet)</code>，有时网卡名也可能是<code class="language-plaintext highlighter-rouge">ens33</code>、<code class="language-plaintext highlighter-rouge">ens36</code>。</p><h3 id="nmtui-配置-ip-的工具"><code class="language-plaintext highlighter-rouge">nmtui</code> 配置 <code class="language-plaintext highlighter-rouge">IP</code> 的工具</h3><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112318431.png" alt="image-20201210112318431" /></p><p>选<code class="language-plaintext highlighter-rouge">Edit a connection</code>回车</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112358733.png" alt="image-20201210112358733" /></p><p>选择需要配置IP的网卡名称,如 <code class="language-plaintext highlighter-rouge">eth0</code>，再选择右边的 <code class="language-plaintext highlighter-rouge">Edit</code>（结合左右键和上下键），回车</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112502986.png" alt="image-20201210112502986" /></p><p>上下键选择IPv4后面的回车.</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112523664.png" alt="image-20201210112523664" /></p><p>选择 <code class="language-plaintext highlighter-rouge">Manual</code> (手动配置IP)，回车</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112618967.png" alt="image-20201210112618967" /></p><p>方向机选择右边的 <code class="language-plaintext highlighter-rouge">show</code> 回车</p><p><code class="language-plaintext highlighter-rouge">Addrees</code>（IP 地址），点击 Add 回车即可添加 IP</p><p><code class="language-plaintext highlighter-rouge">Gateway</code>（网关），直接输入</p><p><code class="language-plaintext highlighter-rouge">DNS servers</code>（DNS 域名解析服务器），点击 Add 回车即可添加服务器 IP</p><p>在实验环境：</p><p><code class="language-plaintext highlighter-rouge">IP</code>：<code class="language-plaintext highlighter-rouge">172.25.0.25/24</code> （24就是子网掩码255.255.255.0)</p><p><code class="language-plaintext highlighter-rouge">Gateway</code>: <code class="language-plaintext highlighter-rouge">172.25.0.254</code> (<code class="language-plaintext highlighter-rouge">server1</code>是网关）</p><p><code class="language-plaintext highlighter-rouge">DNS</code>：<code class="language-plaintext highlighter-rouge">172.25.0.254</code> （<code class="language-plaintext highlighter-rouge">server1</code>是<code class="language-plaintext highlighter-rouge">DNS</code>服务器）</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112813602.png" alt="image-20201210112813602" /></p><p>一定勾选 ( 使用空格选择，或者取消选择 )</p><p><code class="language-plaintext highlighter-rouge">Automatically connect</code>在计算机启动的时候要不要把网卡自动激活，</p><p>最后选择 <code class="language-plaintext highlighter-rouge">OK</code></p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112909432.png" alt="image-20201210112909432" /></p><p>选择下面的 <code class="language-plaintext highlighter-rouge">Back</code> 返回</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/image-20201210112944838.png" alt="image-20201210112944838" /></p><p>最后选择 <code class="language-plaintext highlighter-rouge">OK</code></p><p>在 <code class="language-plaintext highlighter-rouge">Server1</code> 上面 ping 一次 <code class="language-plaintext highlighter-rouge">red</code> 测试网络是否已经联通：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>ping <span class="nt">-c</span> 4 172.25.0.25
+</pre></table></code></div></div><h2 id="配置默认软件仓库">配置默认软件仓库</h2><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nb">ls</span> /etc/yum.repos.d/ <span class="c"># 没有yum源</span>
+vim /etc/yum.repos.d/rhel.repo <span class="c"># 新建文件，文件名任意，扩展名为repo</span>
+</pre></table></code></div></div><p>默认在命令模式，无法编辑文件，需要输入i键，进入编辑模式，手动输入如下内容:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>[BaseOS]
+name=BaseOS
+baseurl=http://server1.net0.example.com/rhel8/BaseOS
+gpgcheck=0
+
+[AppStream]
+name=AppStream
+baseurl=http://server1.net0.example.com/rhel8/AppStream
+gpgcheck=0
+</pre></table></code></div></div><p>验证：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>yum clean all <span class="c"># 清理缓存</span>
+yum repolist <span class="c"># 查看yum源有几个，输出出来</span>
+</pre></table></code></div></div><h2 id="调试-selinux">调试 SELinux</h2><p>实质上这道题是配合非常规配置时对 SELinux 进行配置</p><h3 id="12月17日新增">12月17日新增：</h3><p>上课讲题了。</p><p>这道题可使用 <code class="language-plaintext highlighter-rouge">setroubleshoot-server</code></p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>yum <span class="nb">install</span> <span class="nt">-y</span> setroubleshoot-server
+systemctl start httpd
+journelctl <span class="nt">-xe</span>
+</pre></table></code></div></div><p>查看日志，SETroubleshoot会直接给出命令与方法：</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>semanage port <span class="nt">-a</span> <span class="nt">-t</span> http_port_t <span class="nt">-p</span> tcp 82
+</pre></table></code></div></div><p>以下为原答案</p><h3 id="配合非正常端口">配合非正常端口</h3><p>需要 <code class="language-plaintext highlighter-rouge">semanage</code> 程序，如果没有预装，需要安装此包。</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="c"># 查询哪一个软件包包含此软件</span>
+yum provides semanage
+<span class="c"># 安装 policycoreutils-python-utils</span>
+yum <span class="nb">install</span> <span class="nt">-y</span> policycoreutils-python-utils
+</pre></table></code></div></div><p>此例子为放行 <code class="language-plaintext highlighter-rouge">82</code> 号端口</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>semanage port <span class="nt">-a</span> <span class="nt">-t</span> http_port_t <span class="nt">-p</span> tcp 82
+</pre></table></code></div></div><p>之后查看配置</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>semanage port <span class="nt">-l</span> | <span class="nb">grep </span>http_port_t
+</pre></table></code></div></div><p>之后可以启动 httpd 服务</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>systemctl start httpd
+</pre></table></code></div></div><p>检查 SELinux 工作状态</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>getenforce
+</pre></table></code></div></div><h3 id="扩展项目配合非默认目录">扩展项目：配合非默认目录</h3><p>配合非默认目录需要修改 SELinux 安全上下文。</p><p>如，要将 Web 根目录修改为 <code class="language-plaintext highlighter-rouge">/var/test_www/html/</code>.</p><ul><li>修改 SELinux 类型与默认的 <code class="language-plaintext highlighter-rouge">/var/www/html/</code> 相同</ul><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>semanage fcontext <span class="nt">-a</span> <span class="nt">-e</span> /var/www /var/test_www
+</pre></table></code></div></div><ul><li>重新设定 <code class="language-plaintext highlighter-rouge">/var</code> 目录标签</ul><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>restorecon <span class="nt">-Rv</span> /var/
+</pre></table></code></div></div><p>以上</p><p>检查 <code class="language-plaintext highlighter-rouge">httpd</code> 服务与连接状态</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>systemctl status httpd
+
+curl localhost:82
+</pre></table></code></div></div><blockquote><p>参考：<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/configuring-selinux-for-applications-and-services-with-non-standard-configurations_using-selinux#customizing-the-selinux-policy-for-the-apache-http-server-in-a-non-standard-configuration_configuring-selinux-for-applications-and-services-with-non-standard-configurations">RHEL8 Documents: Use SELinux: Cheaper 4 . CONFIGURING SELINUX FOR APPLICATIONS AND SERVICES WITH NON-STANDARD CONFIGURATIONS</a></p></blockquote><h2 id="配置用户账户">配置用户账户</h2><p>创建一个新用户，用户名为tammy，指定ID为2020</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>useradd <span class="nt">-u</span> 2020 tammy
+</pre></table></code></div></div><p>其中 <code class="language-plaintext highlighter-rouge">-u</code> 参数指定新建用户的 <code class="language-plaintext highlighter-rouge">UID</code></p><p>为tammy用户设置密码</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>passwd tammy
+</pre></table></code></div></div><p>注：passwd 生效时，会提示New UNIX password： ，输入题目要求（ilovelinux）并Retype一遍即可生效。</p><p>扩展部分：</p><p>给出另一种方法设置密码，使用 <code class="language-plaintext highlighter-rouge">--stdin</code> 参数指定 <code class="language-plaintext highlighter-rouge">passwd</code> 命令从标准输入读入内容来设置密码。</p><p>因此使用 <code class="language-plaintext highlighter-rouge">echo</code> 将要设定的密码字符串输出至标准输入，并利用管道符使其作为 <code class="language-plaintext highlighter-rouge">passwd</code> 命令的输入。</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">echo </span>ilovelinux | passwd tammy <span class="nt">--stdin</span>
+</pre></table></code></div></div><h2 id="创建用户账户">创建用户账户</h2><h3 id="12月17日新增-1">12月17日新增</h3><p>到底是应该用附加组，希望正式考题的中文翻译不要有这种奇怪的模棱两可的东西。</p><p>Anyway：</p><div class="language-shell highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>useradd <span class="nt">-G</span> admins zhsan
+useradd <span class="nt">-G</span> admins lisi
+</pre></table></code></div></div><p>写成这样凑合看吧</p><p>以下为原题解：</p><blockquote><p>注意原题解错误之处</p></blockquote><p>按照需求，对用户和组进行创建</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>groupadd admins
+useradd zhsan <span class="nt">-g</span> admins
+useradd lisi <span class="nt">-g</span> admins
+useradd wangwu <span class="nt">-s</span> /sbin/nologin 
+</pre></table></code></div></div><p>其中 <code class="language-plaintext highlighter-rouge">-g</code> 参数指定创建用户代表的主要组</p><p><code class="language-plaintext highlighter-rouge">-s</code> 命令代表用户登录 Shell</p><p>禁止用户登录需要指定为 <code class="language-plaintext highlighter-rouge">/sbin/nologin</code></p><p>接下来可以普通的使用 <code class="language-plaintext highlighter-rouge">passwd</code> 更改密码，如下：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>passwd zhsan
+<span class="go">New UNIX password：ilovelinux
+</span><span class="gp">$</span><span class="w"> </span>passwd lisi
+<span class="go">New UNIX password： ilovelinux
+</span><span class="gp">$</span><span class="w"> </span>passwd wangwu
+<span class="go">New UNIX password：ilovelinux
+</span></pre></table></code></div></div><p>也可以：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nb">echo </span>ilovelinux | passwd zhsan <span class="nt">--stdin</span>
+<span class="nb">echo </span>ilovelinux | passwd lisi <span class="nt">--stdin</span>
+<span class="nb">echo </span>ilovelinux | passwd wangwu <span class="nt">--stdin</span>
+</pre></table></code></div></div><h2 id="配置-cron-计划任务">配置 <code class="language-plaintext highlighter-rouge">cron</code> 计划任务</h2><p>编辑 <code class="language-plaintext highlighter-rouge">cron</code> 计划</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>crontab <span class="nt">-e</span> <span class="nt">-u</span> zhsan
+</pre></table></code></div></div><p>e代表编辑计划任务，-u代表指定用户</p><p>此处注意，题目要求以 <code class="language-plaintext highlighter-rouge">zhsan</code> 用户执行任务，而<strong>不是</strong>用<code class="language-plaintext highlighter-rouge">root</code> 账户执行任务！</p><p>此命令执行后会打开默认编辑器 ( 即 <code class="language-plaintext highlighter-rouge">vim</code> )</p><p>按 <code class="language-plaintext highlighter-rouge">i</code> 进入插入模式，输入一行</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>*/5 * * * * logger "RH200 Test"
+</pre></table></code></div></div><p>对应分别为：分 小时 日 月 星期 命令</p><p>这里注意不要犯这个大错误</p><p>如果写成 <code class="language-plaintext highlighter-rouge">5 * * * *</code> 代表每次满足分钟为 <code class="language-plaintext highlighter-rouge">5</code> 的时候执行后面的命令。</p><p>而<strong>每</strong> 5 分钟执行一次命令则需要写成 <code class="language-plaintext highlighter-rouge">*/5 * * * *</code></p><p>其实网上有 <code class="language-plaintext highlighter-rouge">cron</code> 表达式计算器，但考试需要自己学好：</p><p>链接放这：<a href="https://www.cnblogs.com/linjiqin/p/3178452.html">cron 表达式详解</a></p><p>按 <code class="language-plaintext highlighter-rouge">ESC</code> 返回命令模式，<code class="language-plaintext highlighter-rouge">:wq</code> 保存退出。</p><p><em>扩展：可将计划任务写进 <code class="language-plaintext highlighter-rouge">/etc/crontab</code> 中，此文件保存系统级计划任务，需要额外增加执行的用户名。也可写进 <code class="language-plaintext highlighter-rouge">/var/spool/cron/</code> 下对应用户的文件中。</em></p><h2 id="配置文件权限">配置文件权限</h2><p>分析题目，我们需要做几件事情：</p><ul><li>复制所需文件<li>设置文件的所属用户与所属组<li>确定所有用户没有执行权限<li>确定其他用户 ( <code class="language-plaintext highlighter-rouge">o</code> 权限组) 具有读写权限<li>按需求对两个用户配置 <code class="language-plaintext highlighter-rouge">ACL</code></ul><p>来看命令</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">cp</span> /etc/hosts /var/tmp/hosts
+</pre></table></code></div></div><p>查看一下文件权限：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-l</span> /var/tmp/hosts
+<span class="go">-rw-r--r--. 1 root root 782 Dec 10 21:35 /var/tmp/hosts
+</span></pre></table></code></div></div><p>当前所属用户与组已经为 <code class="language-plaintext highlighter-rouge">root</code> 其实无需修改，如要修改，使用 <code class="language-plaintext highlighter-rouge">chown</code> 命令：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chown </span>root:root /var/tmp/hosts
+</pre></table></code></div></div><p>当前权限为644，对于题目需求也无需修改，所有用户均无执行权限，且其他用户有读权限。</p><p>对于两条针对用户的特殊权限需要配置两条 <code class="language-plaintext highlighter-rouge">ACL</code></p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>setfacl <span class="nt">-m</span> u:zhsan:6 /var/tmp/hosts
+setfacl <span class="nt">-m</span> u:lisi:0 /var/tmp/hosts
+</pre></table></code></div></div><p>查看权限：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-l</span> /var/tmp/hosts
+<span class="go">-rw-rw-r--+ 1 root root 782 Dec 10 21:35 /var/tmp/hosts
+</span><span class="gp">[root@red ~]#</span><span class="w"> </span>getfacl /var/tmp/hosts
+<span class="go">getfacl: Removing leading '/' from absolute path names
+</span><span class="gp">#</span><span class="w"> </span>file: var/tmp/hosts
+<span class="gp">#</span><span class="w"> </span>owner: root
+<span class="gp">#</span><span class="w"> </span>group: root
+<span class="go">user::rw-
+user:zhsan:rw-
+user:lisi:---
+group::r--
+mask::rw-
+other::r--
+</span></pre></table></code></div></div><h2 id="创建公用目录">创建公用目录</h2><p>首先按要求创建目录</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">mkdir</span> /home/tools
+</pre></table></code></div></div><p>将其所属组更改为 <code class="language-plaintext highlighter-rouge">admins</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chgrp </span>admins /home/tools
+</pre></table></code></div></div><p>当前权限应为</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-ld</span> /home/tools
+<span class="go">drwxr-xr-x. 2 root admins 6 Dec  9 14:57 /home/tools
+</span></pre></table></code></div></div><p>分析当前权限可得，当前 <code class="language-plaintext highlighter-rouge">root</code> 用户可读可写可访问，所属组可读可访问，其他用户可读可访问。</p><p>需要分配的权限为<code class="language-plaintext highlighter-rouge">drwxrwx---</code> 即对组可读写可访问，并取消对其他用户的权限。根据数字模式计算可得 <code class="language-plaintext highlighter-rouge">770</code> 。因此执行：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>770 /home/tools
+</pre></table></code></div></div><p>再次查看，当前权限为：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-ld</span> /home/tools
+<span class="go">drwxrwx---. 2 root admins 6 Dec  9 14:57 /home/tools
+</span></pre></table></code></div></div><p>将在此目录下创建的文件默认设置为此组，需要设置 <code class="language-plaintext highlighter-rouge">SetGID</code> 权限</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>2770 /home/tools
+</pre></table></code></div></div><p>权限变为：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-ld</span> /home/tools
+<span class="go">drwxrws---. 2 root admins 6 Dec  9 14:57 /home/tools
+</span></pre></table></code></div></div><h4 id="扩展知识setuid-与-setgid">扩展知识：<code class="language-plaintext highlighter-rouge">SetUID</code> 与 <code class="language-plaintext highlighter-rouge">SetGID</code></h4><p>如果你使用过一阵 Linux ，你一定对 <code class="language-plaintext highlighter-rouge">sudo</code> 命令不感到陌生。<code class="language-plaintext highlighter-rouge">sudo</code> 命令相当于临时提权至 <code class="language-plaintext highlighter-rouge">root</code> 用户执行程序。<code class="language-plaintext highlighter-rouge">SetUID</code> 与 <code class="language-plaintext highlighter-rouge">SetGID</code> 在理解上与 <code class="language-plaintext highlighter-rouge">sudo</code> 有相似之处。</p><p><code class="language-plaintext highlighter-rouge">SetUID</code> 与 <code class="language-plaintext highlighter-rouge">SetGID</code> 是一种特殊权限，对于文件来说，它意为：当用户拥有可执行这个文件的权限时，自动使用所属用户 ( 或组 ) 的特权来执行文件。</p><p>而对于目录来说，当设定 <code class="language-plaintext highlighter-rouge">SetGID</code> 权限时，则意为：当用户创建新文件或子目录时，将文件和子目录的所属组置为当前目录设定的所属组。</p><p><strong>一般对于目录是不能设定 <code class="language-plaintext highlighter-rouge">SetUID</code> 权限的!</strong></p><p><code class="language-plaintext highlighter-rouge">SetUID</code> 与 <code class="language-plaintext highlighter-rouge">SetGID</code> 有其指定的标识符，为 <code class="language-plaintext highlighter-rouge">s</code> 权限。可以使用 <code class="language-plaintext highlighter-rouge">u+s</code> 或 <code class="language-plaintext highlighter-rouge">g+s</code> 的方式设定。</p><p><code class="language-plaintext highlighter-rouge">SetUID</code> 与 <code class="language-plaintext highlighter-rouge">SetGID</code> 也有其数字表示法，如：</p><p>当前有一文件 <code class="language-plaintext highlighter-rouge">test.txt</code>权限为：<code class="language-plaintext highlighter-rouge">-rw-r--r--</code> 即默认的<code class="language-plaintext highlighter-rouge">644</code> 权限。</p><p>对此文件指定 <code class="language-plaintext highlighter-rouge">SetUID</code> 权限为</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>4644 test.txt
+</pre></table></code></div></div><p>而 <code class="language-plaintext highlighter-rouge">SetGID</code> 为：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>2644 test.txt
+</pre></table></code></div></div><p>若指定两者，加起来即可，即为：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>6644 test.txt
+</pre></table></code></div></div><blockquote><p>参考：<a href="https://en.wikipedia.org/wiki/Setuid">WikiPedia:Setuid</a></p><p>manpage: chmod</p></blockquote><h2 id="配置-ntp-时间客户端">配置 <code class="language-plaintext highlighter-rouge">NTP</code> 时间客户端</h2><p>安装 <code class="language-plaintext highlighter-rouge">chrony</code> 软件包</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>yum <span class="nb">install </span>chrony
+</pre></table></code></div></div><p>修改配置文件 <code class="language-plaintext highlighter-rouge">/etc/chrony.conf</code></p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>vim /etc/chrony.conf
+</pre></table></code></div></div><p>在开头第 3 行，仿照写法新建一行，填入：</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>server server1.net0.example.com iburst
+</pre></table></code></div></div><p>启动服务</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>systemctl <span class="nb">enable </span>chronyd
+systemctl restart chronyd
+</pre></table></code></div></div><p>查看时间状态</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>timedatectl status <span class="c"># 查看时间同步状态与时区等信息</span>
+chronyc sourcestats <span class="c"># 查看 NTP 服务器状态</span>
+</pre></table></code></div></div><p>示例：</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span>timedatectl status
+<span class="go">               Local time: Thu 2020-12-10 22:52:03 CST
+           Universal time: Thu 2020-12-10 14:52:03 UTC
+                 RTC time: Thu 2020-12-10 14:52:03
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+</span><span class="gp">[root@red ~]#</span><span class="w"> </span>chronyc sourcestats
+<span class="go">210 Number of sources = 5
+Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
+==============================================================================
+time.cloudflare.com         7   4   206     -4.223     53.666    +27ms  2057us
+139.199.214.202             7   5   201     +3.024     45.744  +1663us   845us
+ntp5.flashdance.cx          6   5   208    +15.205     46.942    -14ms   980us
+</span><span class="gp">stratum2-1.ntp.led01.ru.&gt;</span><span class="w">   </span>6   5   141    +93.992    127.219    +30ms  2253us
+<span class="go">server1.net0.example.com    7   3   199     -0.043      1.802  -1184us    47us
+</span></pre></table></code></div></div><blockquote><p>注：此处实验环境接通互联网，局域网环境中可以将配置文件中原配置注释掉，加快速度</p></blockquote><h2 id="配置-autofs">配置 <code class="language-plaintext highlighter-rouge">autofs</code></h2><p>此题需要处理自动挂载与 <code class="language-plaintext highlighter-rouge">NFS</code> 共享</p><p>需要安装 <code class="language-plaintext highlighter-rouge">nfs-utils</code> 与 <code class="language-plaintext highlighter-rouge">autofs</code> 软件包</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>yum <span class="nb">install </span>nfs-utils autofs
+</pre></table></code></div></div><p>可以使用 <code class="language-plaintext highlighter-rouge">showmount</code> 查看挂载信息</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span>showmount <span class="nt">-e</span> 172.25.0.254
+<span class="go">Export list for 172.25.0.254:
+/rhome *
+</span></pre></table></code></div></div><p>可以尝试进行手动挂载，但无论如何要先创建挂载点：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">mkdir</span> /rhome <span class="c"># 创建挂载点的父目录</span>
+</pre></table></code></div></div><p>接下来编辑 <code class="language-plaintext highlighter-rouge">/etc/auto.master</code> 文件</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>vim /etc/auto.master
+</pre></table></code></div></div><p>在第 7 行原位置，仿照原配置在下面新建一行，输入要挂载的父目录位置与要创建的配置文件：</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>/rhome    /etc/rhome.misc
+</pre></table></code></div></div><p>保存退出，创建 <code class="language-plaintext highlighter-rouge">/etc/rhome.misc</code></p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>vim /etc/rhome.misc
+</pre></table></code></div></div><p>输入一行：</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>ldapuser0    -fstype=nfs    172.25.0.254:/rhome/ldapuser0
+</pre></table></code></div></div><p>分别为：要挂载的目录，文件系统类型，与挂载设备，此处为通过 <code class="language-plaintext highlighter-rouge">NFS</code> 挂载</p><p>启动 <code class="language-plaintext highlighter-rouge">autofs</code> 服务</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>systemctl start autofs
+</pre></table></code></div></div><p>切换至 <code class="language-plaintext highlighter-rouge">ldapuser0</code> 用户验证配置</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>su - ldapuser0 <span class="c"># 无需退出登录，直接切换至目标用户</span>
+</pre></table></code></div></div><p>查看自动挂载效果与权限</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="gp">[root@red ~]#</span><span class="w"> </span>systemctl start autofs
+<span class="gp">[root@red ~]#</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-l</span> /rhome/
+<span class="go">total 0
+</span><span class="gp">[root@red ~]#</span><span class="w"> </span>su - ldapuser0
+<span class="go">Last login: Thu Dec 10 22:36:58 CST 2020 on pts/0
+</span><span class="gp">[ldapuser0@red ~]$</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-l</span> /rhome
+<span class="go">total 0
+</span><span class="gp">[ldapuser0@red ~]$</span><span class="w"> </span><span class="nb">cd</span> /rhome
+<span class="gp">[ldapuser0@red rhome]$</span><span class="w"> </span><span class="nb">ls</span>
+<span class="gp">[ldapuser0@red rhome]$</span><span class="w"> </span><span class="nb">cd </span>ldapuser0
+<span class="gp">[ldapuser0@red ldapuser0]$</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-ld</span>
+<span class="go">drwx------. 2 ldapuser0 ldapuser0 62 Nov 22 01:30 .
+</span><span class="gp">[ldapuser0@red ldapuser0]$</span><span class="w"> </span>mount
+<span class="go">... 省略部分输出
+172.25.0.254:/rhome/ldapuser0 on /rhome/ldapuser0 type nfs4 (rw,relatime,vers=4.2,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.25.0.25,local_lock=none,addr=172.25.0.254)
+</span></pre></table></code></div></div><h2 id="查找文件">查找文件</h2><p>使用一条命令来完成。</p><p><code class="language-plaintext highlighter-rouge">find</code> 命令可对查找到的内容执行命令。</p><p>但以防有可能出现的问题 ( 指 <code class="language-plaintext highlighter-rouge">cp</code> 将查找到的内容写进文件而非目录 )，先将目标目录建立起来：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mkdir</span> /root/findfiles
+</pre></table></code></div></div><p>执行 <code class="language-plaintext highlighter-rouge">find</code> 命令：</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>find /etc/ <span class="nt">-size</span> +5M <span class="nt">-type</span> f <span class="nt">-exec</span> <span class="nb">cp</span> <span class="o">{}</span> /root/findfiles <span class="se">\;</span>
+</pre></table></code></div></div><p>这条命令需要详细解释。</p><p><code class="language-plaintext highlighter-rouge">-size</code> 参数代表查找筛选条件为文件大小。 <code class="language-plaintext highlighter-rouge">+5M</code> 代表大于 5M 其他类似参数有 <code class="language-plaintext highlighter-rouge">-name</code> (查找文件名), <code class="language-plaintext highlighter-rouge">-iname</code> (查找文件名并忽略大小写) <code class="language-plaintext highlighter-rouge">-type</code> (查找文件类型)等，一共有二三十种。</p><p><code class="language-plaintext highlighter-rouge">-type f</code> 代表查找一般文件</p><p><code class="language-plaintext highlighter-rouge">-exec</code> 命令代表对查找到的文件作为后面的命令参数执行。</p><p>其中 <code class="language-plaintext highlighter-rouge">{}</code> 代表被查找到的文件，命令结束需要加 <code class="language-plaintext highlighter-rouge">;</code> 结尾，为防止歧义需要对 <code class="language-plaintext highlighter-rouge">;</code> 进行转义，因此加 <code class="language-plaintext highlighter-rouge">\;</code></p><blockquote><p>建议阅读资料：<a href="https://www.oracle.com/cn/technical-resources/articles/linux-calish-find.html">Linux Find 命令精通指南</a></p></blockquote><h2 id="查找字符串">查找字符串</h2><p>查看 <code class="language-plaintext highlighter-rouge">/etc/man_db.conf</code> 文件下带 <code class="language-plaintext highlighter-rouge">sbin</code> 字符串的所有行，将查找结果存到 <code class="language-plaintext highlighter-rouge">/root/out.txt</code> 里</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">cat</span> /etc/man_db.conf | <span class="nb">grep </span>sbin <span class="o">&gt;</span> /root/out.txt
+</pre></table></code></div></div><h2 id="创建归档">创建归档</h2><p>根据题意，创建一个名为backup.tar.bz2的归档，使用bzip2进行压缩，压缩包内含有 <code class="language-plaintext highlighter-rouge">/usr/local</code> 的内容</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">tar</span> <span class="nt">-cjvf</span> /root/backup.tar.bz2 /usr/local/
+</pre></table></code></div></div><p>注：</p><p>没有打包压缩命令的需要安装bzip和tar命令</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>yum <span class="nt">-y</span> <span class="nb">install tar </span>bzip2
+</pre></table></code></div></div><h2 id="配置容器服务">配置容器服务</h2><h2 id="为容器配置持久存储">为容器配置持久存储</h2><p>其实这两道题本质是一道题，怕不怕。</p><p>首先，我怀疑实验环境根本没配好，部署 Registry 居然没有给做信任自签名证书 …… 嘛反正也不是不能做就是了。</p><p>装容器运行时：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>dnf module <span class="nb">install </span>container-tools
+<span class="c"># 也许只装 podman 也可以</span>
+<span class="nv">$ </span>dnf <span class="nb">install </span>podman
+</pre></table></code></div></div><p>先配置 log，方法为新建 <code class="language-plaintext highlighter-rouge">/var/log/journal</code> 目录：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> /var/log/journal
+<span class="nv">$ </span><span class="nb">chown </span>root:systemd-journal /var/log/journal
+<span class="nv">$ </span><span class="nb">chmod </span>2775 /var/log/journal
+<span class="nv">$ </span>systemctl restart systemd-journald
+</pre></table></code></div></div><p>题目要求容器以 <code class="language-plaintext highlighter-rouge">rootless</code> 运行，这时候如果使用 SSH 登录先登出，使用题目需求的 <code class="language-plaintext highlighter-rouge">tammy</code> 账号登录：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="c"># 在 Server 中</span>
+<span class="nv">$ </span>ssh tammy@red
+</pre></table></code></div></div><p>首先 Pull 镜像下来，因为没有信任自签名证书，加参数。</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>podman pull registry.lab.example.com/nginx <span class="nt">--tls-verify</span><span class="o">=</span><span class="nb">false</span>
+</pre></table></code></div></div><p>如果可以直接 Pull 容器则很简单，但如果需要登录的话，在没有信任证书的情况下则需要修改配置文件了。</p><p><code class="language-plaintext highlighter-rouge">/etc/containers/registries.conf</code> ，理论上只要在 <code class="language-plaintext highlighter-rouge">registries.insecure</code> 里增加域名即可达到目的，但也可顺便增加搜索的容器仓库。</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="o">[</span>registries.search]
+registries <span class="o">=</span> <span class="o">[</span><span class="s1">'registry.lab.example.com'</span>,<span class="s1">'registry.access.redhat.com'</span>, <span class="s1">'registry.redhat.io'</span>, <span class="s1">'docker.io'</span>, <span class="s1">'quay.io'</span><span class="o">]</span>
+
+<span class="o">[</span>registries.insecure]
+registries <span class="o">=</span> <span class="o">[</span><span class="s1">'registry.lab.example.com'</span><span class="o">]</span>
+</pre></table></code></div></div><p>之后登录容器仓库：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>podman login registry.lab.example.com
+</pre></table></code></div></div><p>运行容器，按照题目要求把该写的参数一次性写上：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mkdir</span> /home/tammy/container_logserver
+<span class="nv">$ </span>podman run <span class="nt">-d</span> <span class="nt">--name</span> logserver <span class="se">\</span>
+ <span class="nt">-v</span> /home/tammy/container_logserver:/usr/share/nginx/html <span class="se">\</span>
+ registry.lab.example.com/nginx
+</pre></table></code></div></div><p>生成 systemd 服务，停止容器并从 systemd 启动</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> /home/tammy/.config/systemd/user
+<span class="nv">$ </span>podman generate systemd logserver <span class="o">&gt;</span> container-logserver.service
+<span class="nv">$ </span><span class="nb">mv </span>container-logserver.service ~/.config/systemd/user
+<span class="nv">$ </span>systemctl <span class="nt">--user</span> daemon-reload
+<span class="nv">$ </span>podman stop logserver
+<span class="nv">$ </span>systemctl <span class="nt">--user</span> <span class="nb">enable</span> <span class="nt">--now</span> container-logserver
+</pre></table></code></div></div><p>拷贝一下日志文件：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>su -
+<span class="nv">$ </span>usermod <span class="nt">-aG</span> wheel tammy
+<span class="nv">$ </span><span class="nb">logout</span>
+<span class="nv">$ </span><span class="nb">sudo </span>find /var/log/journal <span class="nt">-name</span> <span class="k">*</span>.journal <span class="nt">-exec</span> <span class="nb">cp</span> <span class="nt">-rv</span> <span class="o">{}</span> /home/tammy/container_logserver <span class="se">\;</span>
+<span class="nv">$ </span>systemctl <span class="nt">--user</span> restart container-logserver
+</pre></table></code></div></div><p>最后可以再确认一下容器守护服务状态：</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>systemctl <span class="nt">--user</span> status container-logserver
+</pre></table></code></div></div><p>确保服务能开机自动启动而不是需要登录对应用户才能启动：</p><blockquote><p>参考 <a href="https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/User_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">ArchWiki:Systemd/User ( 简体中文 )</a></p></blockquote><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>loginctl enable-linger tammy
+</pre></table></code></div></div><p>保险期间，加一条 crontab:</p><blockquote><p>实际 reboot 后可能并不能开机自启动，lingering 失效的情况是有可能发生的</p></blockquote><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>crontab <span class="nt">-e</span> <span class="nt">-u</span> tammy
+
+<span class="c"># 加入：</span>
+
+@reboot systemctl <span class="nt">--user</span> start container-logserver.service
+</pre></table></code></div></div><h1 id="blue">Blue</h1><h2 id="设置-root-密码">设置 <code class="language-plaintext highlighter-rouge">root</code> 密码</h2><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-10-23-44-48.png" alt="" /></p><p>重启虚拟机</p><p>进入到如下界面按 <code class="language-plaintext highlighter-rouge">↑</code> 键，之后按 <code class="language-plaintext highlighter-rouge">e</code> 键</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-10-23-45-30.png" alt="" /></p><p>按 <code class="language-plaintext highlighter-rouge">e</code> 键后，找到 <code class="language-plaintext highlighter-rouge">linux</code> 这一行，将原来的 <code class="language-plaintext highlighter-rouge">ro</code> 修改为 <code class="language-plaintext highlighter-rouge">rw</code> ，再手动添加空格 <code class="language-plaintext highlighter-rouge">rd.break</code></p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-10-23-46-45.png" alt="" /></p><p><code class="language-plaintext highlighter-rouge">ro</code> 代表只读，<code class="language-plaintext highlighter-rouge">rw</code> 代表可读可写</p><blockquote><p>因为等会会修改root密码，我们需要对计算机有写权限</p></blockquote><p>添加 <code class="language-plaintext highlighter-rouge">rd.break</code> 的作用是防止计算机正常启动系统，加 <code class="language-plaintext highlighter-rouge">rd.break</code> 可以让 Linux 进入救援模式</p><p>修改完成后，按 <code class="language-plaintext highlighter-rouge">Ctrl+x</code> 启动系统并进入救援模式</p><p>读取操作系统的根分区数据，修改密码</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="gp">switch_root:/#</span><span class="w"> </span><span class="nb">chroot</span> /sysroot <span class="c"># 切换根目录，linux系统的所有资料都在sysroot目录下，我们需要先切换到该目录</span>
+</pre></table></code></div></div><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="gp">sh-4.4#</span><span class="w"> </span>passwd root <span class="c"># 修改root密码，也可以修改其他任何用户的密码</span>
+<span class="go">New password:
+Retype new password: 
+</span></pre></table></code></div></div><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="gp">sh-4.4#</span><span class="w"> </span><span class="nb">touch</span> /.autorelabel <span class="c"># 在根目录下创建隐藏文件.autorelabel文件</span>
+</pre></table></code></div></div><p>这一步为了刷新 SELinux 标签，否则无法进入系统</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">sh-4.4#</span><span class="w"> </span><span class="nb">exit</span>
+<span class="gp">switch_root:/#</span><span class="w"> </span><span class="nb">exit</span>
+</pre></table></code></div></div><p>计算机自动重启，重启计算机后，正常进入操作系统，输入新配置的密码即可。</p><h2 id="配置网络地址-1"><a href="#配置网络地址">配置网络地址</a></h2><h2 id="配置默认软件仓库-1"><a href="#配置默认软件仓库">配置默认软件仓库</a></h2><h2 id="调整逻辑卷大小">调整逻辑卷大小</h2><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+</pre><td class="rouge-code"><pre><span class="gp">[root@blue ~]#</span><span class="w"> </span>lsblk     <span class="c"># 查看现有分区状态</span>
+<span class="go">NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0            11:0    1 1024M  0 rom  
+vda           252:0    0   50G  0 disk 
+|-vda1        252:1    0    1G  0 part /boot
+`-vda2        252:2    0   49G  0 part 
+  |-rhel-root 253:0    0 46.9G  0 lvm  /
+  `-rhel-swap 253:1    0  2.2G  0 lvm  [SWAP]
+vdb           252:16   0   10G  0 disk 
+</span><span class="gp">`-vdb1        252:17   0  200M  0 part      #</span><span class="w"> </span>vdb1 只有200M，需要对逻辑卷扩容
+<span class="gp">  `-test-vo   253:2    0  196M  0 lvm  /vo  #</span><span class="w"> </span>有一个196M大小的逻辑卷
+<span class="go">vdc           252:32   0   10G  0 disk
+
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span>fdisk /dev/vdb  <span class="c"># 在 /dev/vdb 创建新分区</span>
+<span class="go">
+Command (m for help): n    
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 
+First sector (411648-20971519, default 411648): 
+</span><span class="gp">Last sector, +sectors or +size{K,M,G,T,P} (411648-20971519, default 20971519):^[+200M  #</span><span class="w"> </span>创建200M大小分区
+<span class="go">
+Created a new partition 2 of type 'Linux' and of size 200 MiB.
+
+</span><span class="gp">Command (m for help): w  #</span><span class="w"> </span>写入分区表
+<span class="go">The partition table has been altered.
+Syncing disks.
+
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span>vgextend /dev/test /dev/vdb2  <span class="c"># 将新分区加入卷组</span>
+<span class="go">  Physical volume "/dev/vdb2" successfully created.
+  Volume group "test" successfully extended
+  
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span>lvextend <span class="nt">-L</span> 300M /dev/test/vo <span class="c"># 对逻辑卷进行扩容</span>
+<span class="go">Size of logical volume test/vo changed from 196.00 MiB (49 extents) to 300.00 MiB (75 extents).
+Logical volume test/vo successfully resized.
+  
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span><span class="nb">df</span> <span class="nt">-h</span> <span class="c"># 查看当前分区挂载点大小，现在还未刷新</span>
+<span class="go">Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               473M     0  473M   0% /dev
+tmpfs                  490M     0  490M   0% /dev/shm
+tmpfs                  490M  6.7M  483M   2% /run
+tmpfs                  490M     0  490M   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   47G  1.7G   46G   4% /
+/dev/vda1             1014M  160M  855M  16% /boot
+/dev/mapper/test-vo    191M   12M  180M   6% /vo
+tmpfs                   98M     0   98M   0% /run/user/0
+
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span>xfs_growfs /vo <span class="c"># 进行 xfs 动态扩容</span>
+<span class="go">meta-data=/dev/mapper/test-vo    isize=512    agcount=4, agsize=12544 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=50176, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=1368, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 50176 to 76800
+
+</span><span class="gp">[root@blue ~]#</span><span class="w"> </span><span class="nb">df</span> <span class="nt">-h</span> <span class="c"># 逻辑卷已扩容</span>
+<span class="go">Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               473M     0  473M   0% /dev
+tmpfs                  490M     0  490M   0% /dev/shm
+tmpfs                  490M  6.7M  483M   2% /run
+tmpfs                  490M     0  490M   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   47G  1.7G   46G   4% /
+/dev/vda1             1014M  160M  855M  16% /boot
+/dev/mapper/test-vo    295M   13M  283M   5% /vo
+tmpfs                   98M     0   98M   0% /run/user/0
+</span></pre></table></code></div></div><h2 id="添加交换分区">添加交换分区</h2><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="gp">#</span><span class="w"> </span>fdisk /dev/vdb
+<span class="go">Command (m for help): n
+Select (default p): p
+Partition number(3-4, default 3): 直接回车
+First sector （2048-......, default 2048): 直接回车
+Last sector( ... ...) : +512M
+Command (m for help): w
+</span><span class="gp">#</span><span class="w"> </span>mkswap /dev/vdb3                   <span class="c"># 把vdb3分区格式化为交换分区</span>
+<span class="gp">#</span><span class="w"> </span>vim /etc/fstab                    <span class="c"># 修改文件实现交换分区的永久挂载</span>
+</pre></table></code></div></div><p>默认vim会进入命令模式，需要按i键进入编辑模式，使用方向键到文件末尾添加如下内容：</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>/dev/vdb3 swap swap defaults 0 0
+</pre></table></code></div></div><p>编辑完成后，按ESC键回到命令模式，输入:wq保存退出</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="gp">#</span><span class="w"> </span>swapon /dev/vdb3  <span class="c"># 激活交换分区</span>
+<span class="gp">#</span><span class="w"> </span>mount <span class="nt">-a</span>         <span class="c"># 读取/etc/fstab挂载交换分区</span>
+<span class="gp">#</span><span class="w"> </span>free <span class="nt">-m</span>          <span class="c"># 查看效果</span>
+</pre></table></code></div></div><h2 id="创建逻辑卷">创建逻辑卷</h2><p>为支持 <code class="language-plaintext highlighter-rouge">vfat</code> 格式，需安装软件包</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>yum <span class="nb">install </span>dosfstools
+</pre></table></code></div></div><p>使用fdisk命令新建一个分区</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="gp">#</span><span class="w"> </span>fdisk /dev/vdb
+<span class="go">Command (m for help): n
+Select (default p): p
+Partition number(3-4, default 3): 直接回车
+First sector （2048-......, default 2048): 直接回车
+Last sector( ... ...) : +2G
+Command (m for help): w
+</span></pre></table></code></div></div><p>使用vgcreate命令创建VG，创建之后使用vgs命令查看是否成功</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="gp">#</span><span class="w"> </span>vgcreate <span class="nt">-s</span> 16M myvg /dev/vdb3
+</pre></table></code></div></div><p>使用lvcreate 命令 创建一个大小为50个扩展单元的逻辑卷mylv</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>lvcreate <span class="nt">-l</span> 50 <span class="nt">-n</span> mylv myvg
+</pre></table></code></div></div><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-08-00.png" alt="" /></p><p>使用 <code class="language-plaintext highlighter-rouge">vfat</code> 文件系统将逻辑卷 <code class="language-plaintext highlighter-rouge">mylv</code> 格式化</p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="go">mkfs.vfat /dev/myvg/mylv 
+</span></pre></table></code></div></div><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-08-59.png" alt="" /></p><p>此逻辑卷应当在系统启动时自动挂载到 <code class="language-plaintext highlighter-rouge">/mnt/mydata</code> 目录</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-09-43.png" alt="" /></p><p>使用 <code class="language-plaintext highlighter-rouge">vim /etc/fstab</code> 进入到配置文件</p><p>在最后输入 如下图</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-10-15.png" alt="" /></p><p><code class="language-plaintext highlighter-rouge">:wq</code> 保存退出</p><h2 id="创建-vdo-卷">创建 <code class="language-plaintext highlighter-rouge">VDO</code> 卷</h2><p>安装软件包 <code class="language-plaintext highlighter-rouge">vdo</code></p><div class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="gp">#</span><span class="w"> </span>yum <span class="nt">-y</span> <span class="nb">install </span>vdo
+<span class="gp">#</span><span class="w"> </span>systemctl <span class="nb">enable</span> <span class="nt">--now</span> vdo
+</pre></table></code></div></div><p>创建 <code class="language-plaintext highlighter-rouge">VDO</code> 卷</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-12-01.png" alt="" /></p><p>此VDO卷使用xfs文件系统格式化</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-12-24.png" alt="" /></p><p>在系统启动是自动挂载到/vblock目录下</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-12-47.png" alt="" /></p><p>使用 <code class="language-plaintext highlighter-rouge">vim /etc/fstab</code> 命令打开配置文件，在最后输入如下图</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-13-15.png" alt="" /></p><h2 id="配置系统调优">配置系统调优</h2><p>如下图</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 " data-src="/assets/img/EX200/2020-12-11-00-13-50.png" alt="" /></p><blockquote><p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />本文由<a href="https://www.ddupan.top/">潘潇</a>，张一楠，赵天洋，韩嘉岐共同写作。本文采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可,转载时需署名。</p></blockquote></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/linux/'>Linux</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/linux/" class="post-tag no-text-decoration" >linux</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=EX200模拟题解 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=EX200模拟题解 - Pan Xiao's Blog&u=https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=EX200模拟题解 - Pan Xiao's Blog&url=https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/">大编程时代，每个做IT的都该会点</a><li><a href="/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/">EX200模拟题解</a><li><a href="/posts/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E5%A4%A7%E6%94%B9%E9%80%A0-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%AF%87/">家庭网络大改造-网络设计篇</a><li><a href="/posts/%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%A7%84%E6%A8%A1%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E5%9D%91/">一个小规模网络配置的一点点坑</a><li><a href="/posts/Ansible-%E7%AC%94%E8%AE%B0/">Ansible 笔记</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%E5%A4%A7%E7%BC%96%E7%A8%8B%E6%97%B6%E4%BB%A3-%E6%AF%8F%E4%B8%AA%E5%81%9AIT%E7%9A%84%E9%83%BD%E8%AF%A5%E4%BC%9A%E7%82%B9/"><div class="card-body"> <span class="timeago small" > Dec 20, 2020 <i class="unloaded">2020-12-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>大编程时代，每个做IT的都该会点</h3><div class="text-muted small"><p> 比较少见的想写一篇随笔 说起来也比较奇怪，因为我想着把家里的网络从 OpenWRT 彻底迁出来，想用 pfSence 或者一个 Linux 来做网关。 因为 OpenWRT 一直在用别人做好的镜像，而他更多的作为一个家用路由的系统，一些功能不是很全，还有一些东西并不是十分好用。 例如，我需要一个动态路由协议的栈，让我在 GNS3 里做网络实验的路由和主机们连得了公网，并且做到动态更新，...</p></div></div></a></div><div class="card"> <a href="/posts/RHCSA-%E9%80%9A%E8%BF%87%E4%BB%A5%E5%90%8E/"><div class="card-body"> <span class="timeago small" > Mar 20 <i class="unloaded">2021-03-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>RHCSA 通过以后</h3><div class="text-muted small"><p> 正如标题所说，我去考 RHCSA 了，并且考下来了。 如果是我自己掏钱考的话，那我必不可能只掏钱考一个 CSA 的，说实在话太基础了，我感觉一个稍微有段时间的 Linux 使用经验的人，配合 Google 随便就能找得到的 EX200 Dump 应该都能非常轻松的拿下。 至于我的分数？真不是凡尔赛，满分 300 拿了 300。 我想对我个人来讲多多少少是会有些沾沾自喜的，但我也很明...</p></div></div></a></div><div class="card"> <a href="/posts/Ansible-%E7%AC%94%E8%AE%B0/"><div class="card-body"> <span class="timeago small" > Dec 16, 2020 <i class="unloaded">2020-12-16T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Ansible 笔记</h3><div class="text-muted small"><p> RHCE ( EX294 ) 需要考到 Ansible，并且我也认为 Ansible 是非常棒的自动化工具，关键是他的模块扩展性非常强，因此也使得 Ansible 不但可以对 Linux 进行自动化维护，同样对网络设备，BSD 类系统，甚至 Windows 也可以。 还用说嘛，学起来吧。 本篇算是基本入门篇。 首先按照惯例，推荐学习资料。 Ansible Docs RIP...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/OverTheWire-%E4%B8%80%E4%B8%AA-Linux-%E7%9C%9F%E5%A8%B1%E4%B9%90%E7%BD%91%E7%AB%99/" class="btn btn-outline-primary"><p>OverTheWire —— 一个 Linux 真娱乐网站</p></a> <a href="/posts/Ansible-%E7%AC%94%E8%AE%B0/" class="btn btn-outline-primary"><p>Ansible 笔记</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="font-italic text-center text-muted small"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> var options = { scriptUrl: '//panxiao81.disqus.com/embed.js', disqusConfig: function() { this.page.url = 'https://www.ddupan.top/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/'; this.page.identifier = '/posts/EX200%E6%A8%A1%E6%8B%9F%E9%A2%98%E8%A7%A3/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/pan_xiao">Pan Xiao</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/linux/">linux</a> <a class="post-tag" href="/tags/network/">network</a> <a class="post-tag" href="/tags/mixing/">mixing</a> <a class="post-tag" href="/tags/writing/">writing</a> <a class="post-tag" href="/tags/ansible/">ansible</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/recording/">recording</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://www.ddupan.top{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>
